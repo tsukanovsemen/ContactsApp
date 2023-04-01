@@ -202,6 +202,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(524, 401);
             this.Controls.Add(this.AboutFormPanel);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AboutForm";
             this.ShowIcon = false;
             this.AboutFormPanel.ResumeLayout(false);

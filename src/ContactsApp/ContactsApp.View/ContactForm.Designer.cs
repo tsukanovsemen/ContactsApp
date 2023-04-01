@@ -221,6 +221,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(524, 351);
             this.Controls.Add(this.AddContactPanel);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ContactForm";
             this.ShowIcon = false;
             this.AddContactPanel.ResumeLayout(false);
