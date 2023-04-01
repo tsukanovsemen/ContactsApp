@@ -15,6 +15,22 @@ namespace ContactsApp.View
         public AboutForm()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+        }
+
+        private void OKButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void GitHubLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/tsukanovsemen");
+        }
+
+        private void Image8LinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://icons8.com/");
         }
     }
 }
