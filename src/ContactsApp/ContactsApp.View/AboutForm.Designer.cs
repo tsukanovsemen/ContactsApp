@@ -193,6 +193,7 @@
             this.LicenseRichTextBox.Size = new System.Drawing.Size(500, 178);
             this.LicenseRichTextBox.TabIndex = 0;
             this.LicenseRichTextBox.Text = resources.GetString("LicenseRichTextBox.Text");
+            this.LicenseRichTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LicenseRichTextBox_KeyPress);
             // 
             // AboutForm
             // 

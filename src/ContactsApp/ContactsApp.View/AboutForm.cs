@@ -32,5 +32,10 @@ namespace ContactsApp.View
         {
             System.Diagnostics.Process.Start("https://icons8.com/");
         }
+
+        private void LicenseRichTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }
