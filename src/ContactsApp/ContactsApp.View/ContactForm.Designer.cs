@@ -73,7 +73,7 @@
             // 
             // OKCancelPanel
             // 
-            this.OKCancelPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.OKCancelPanel.BackColor = System.Drawing.Color.WhiteSmoke;
             this.OKCancelPanel.Controls.Add(this.OKButton);
             this.OKCancelPanel.Controls.Add(this.CancelButton);
             this.OKCancelPanel.Location = new System.Drawing.Point(0, 306);

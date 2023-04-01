@@ -169,7 +169,7 @@
             // 
             // OKPanel
             // 
-            this.OKPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.OKPanel.BackColor = System.Drawing.Color.WhiteSmoke;
             this.OKPanel.Controls.Add(this.OKButton);
             this.OKPanel.Location = new System.Drawing.Point(0, 355);
             this.OKPanel.Name = "OKPanel";
