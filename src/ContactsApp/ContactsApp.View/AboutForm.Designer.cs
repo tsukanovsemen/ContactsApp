@@ -30,19 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutForm));
             this.AboutFormPanel = new System.Windows.Forms.Panel();
+            this.Image8LinkLabel = new System.Windows.Forms.LinkLabel();
+            this.GitHubLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.AllUsedImageLabel = new System.Windows.Forms.Label();
+            this.MailLabel = new System.Windows.Forms.Label();
+            this.NameLabel = new System.Windows.Forms.Label();
+            this.GitHubLabel = new System.Windows.Forms.Label();
             this.EmailLabel = new System.Windows.Forms.Label();
             this.AuthorLabel = new System.Windows.Forms.Label();
             this.VersionLabel = new System.Windows.Forms.Label();
             this.NameAppLabel = new System.Windows.Forms.Label();
             this.OKPanel = new System.Windows.Forms.Panel();
-            this.LicenseRichTextBox = new System.Windows.Forms.RichTextBox();
-            this.GitHubLabel = new System.Windows.Forms.Label();
-            this.NameLabel = new System.Windows.Forms.Label();
-            this.MailLabel = new System.Windows.Forms.Label();
-            this.AllUsedImageLabel = new System.Windows.Forms.Label();
-            this.GitHubLinkLabel = new System.Windows.Forms.LinkLabel();
-            this.Image8LinkLabel = new System.Windows.Forms.LinkLabel();
             this.OKButton = new System.Windows.Forms.Button();
+            this.LicenseRichTextBox = new System.Windows.Forms.RichTextBox();
             this.AboutFormPanel.SuspendLayout();
             this.OKPanel.SuspendLayout();
             this.SuspendLayout();
@@ -66,6 +66,65 @@
             this.AboutFormPanel.Name = "AboutFormPanel";
             this.AboutFormPanel.Size = new System.Drawing.Size(524, 401);
             this.AboutFormPanel.TabIndex = 0;
+            // 
+            // Image8LinkLabel
+            // 
+            this.Image8LinkLabel.AutoSize = true;
+            this.Image8LinkLabel.Location = new System.Drawing.Point(203, 333);
+            this.Image8LinkLabel.Name = "Image8LinkLabel";
+            this.Image8LinkLabel.Size = new System.Drawing.Size(102, 13);
+            this.Image8LinkLabel.TabIndex = 13;
+            this.Image8LinkLabel.TabStop = true;
+            this.Image8LinkLabel.Text = "https://icons8.com/";
+            this.Image8LinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Image8LinkLabel_LinkClicked);
+            // 
+            // GitHubLinkLabel
+            // 
+            this.GitHubLinkLabel.AutoSize = true;
+            this.GitHubLinkLabel.Location = new System.Drawing.Point(124, 114);
+            this.GitHubLinkLabel.Name = "GitHubLinkLabel";
+            this.GitHubLinkLabel.Size = new System.Drawing.Size(175, 13);
+            this.GitHubLinkLabel.TabIndex = 12;
+            this.GitHubLinkLabel.TabStop = true;
+            this.GitHubLinkLabel.Text = "https://github.com/tsukanovsemen";
+            this.GitHubLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GitHubLinkLabel_LinkClicked);
+            // 
+            // AllUsedImageLabel
+            // 
+            this.AllUsedImageLabel.AutoSize = true;
+            this.AllUsedImageLabel.Location = new System.Drawing.Point(12, 333);
+            this.AllUsedImageLabel.Name = "AllUsedImageLabel";
+            this.AllUsedImageLabel.Size = new System.Drawing.Size(185, 13);
+            this.AllUsedImageLabel.TabIndex = 10;
+            this.AllUsedImageLabel.Text = "All used images are downloaded from:";
+            // 
+            // MailLabel
+            // 
+            this.MailLabel.AutoSize = true;
+            this.MailLabel.Location = new System.Drawing.Point(124, 93);
+            this.MailLabel.Name = "MailLabel";
+            this.MailLabel.Size = new System.Drawing.Size(108, 13);
+            this.MailLabel.TabIndex = 8;
+            this.MailLabel.Text = "apple.semen@mail.ru";
+            // 
+            // NameLabel
+            // 
+            this.NameLabel.AutoSize = true;
+            this.NameLabel.Location = new System.Drawing.Point(124, 72);
+            this.NameLabel.Name = "NameLabel";
+            this.NameLabel.Size = new System.Drawing.Size(96, 13);
+            this.NameLabel.TabIndex = 7;
+            this.NameLabel.Text = "Semyon Tsukanov";
+            // 
+            // GitHubLabel
+            // 
+            this.GitHubLabel.AutoSize = true;
+            this.GitHubLabel.Location = new System.Drawing.Point(12, 114);
+            this.GitHubLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.GitHubLabel.Name = "GitHubLabel";
+            this.GitHubLabel.Size = new System.Drawing.Size(43, 13);
+            this.GitHubLabel.TabIndex = 6;
+            this.GitHubLabel.Text = "GitHub:";
             // 
             // EmailLabel
             // 
@@ -100,11 +159,11 @@
             // NameAppLabel
             // 
             this.NameAppLabel.AutoSize = true;
-            this.NameAppLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NameAppLabel.Location = new System.Drawing.Point(8, 16);
+            this.NameAppLabel.Font = new System.Drawing.Font("Microsoft YaHei", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NameAppLabel.Location = new System.Drawing.Point(9, 3);
             this.NameAppLabel.Margin = new System.Windows.Forms.Padding(3);
             this.NameAppLabel.Name = "NameAppLabel";
-            this.NameAppLabel.Size = new System.Drawing.Size(128, 24);
+            this.NameAppLabel.Size = new System.Drawing.Size(190, 36);
             this.NameAppLabel.TabIndex = 2;
             this.NameAppLabel.Text = "ContactsApp";
             // 
@@ -117,73 +176,6 @@
             this.OKPanel.Size = new System.Drawing.Size(524, 45);
             this.OKPanel.TabIndex = 1;
             // 
-            // LicenseRichTextBox
-            // 
-            this.LicenseRichTextBox.Location = new System.Drawing.Point(12, 152);
-            this.LicenseRichTextBox.Name = "LicenseRichTextBox";
-            this.LicenseRichTextBox.Size = new System.Drawing.Size(500, 178);
-            this.LicenseRichTextBox.TabIndex = 0;
-            this.LicenseRichTextBox.Text = resources.GetString("LicenseRichTextBox.Text");
-            // 
-            // GitHubLabel
-            // 
-            this.GitHubLabel.AutoSize = true;
-            this.GitHubLabel.Location = new System.Drawing.Point(12, 114);
-            this.GitHubLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.GitHubLabel.Name = "GitHubLabel";
-            this.GitHubLabel.Size = new System.Drawing.Size(43, 13);
-            this.GitHubLabel.TabIndex = 6;
-            this.GitHubLabel.Text = "GitHub:";
-            // 
-            // NameLabel
-            // 
-            this.NameLabel.AutoSize = true;
-            this.NameLabel.Location = new System.Drawing.Point(124, 72);
-            this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(96, 13);
-            this.NameLabel.TabIndex = 7;
-            this.NameLabel.Text = "Semyon Tsukanov";
-            // 
-            // MailLabel
-            // 
-            this.MailLabel.AutoSize = true;
-            this.MailLabel.Location = new System.Drawing.Point(124, 93);
-            this.MailLabel.Name = "MailLabel";
-            this.MailLabel.Size = new System.Drawing.Size(108, 13);
-            this.MailLabel.TabIndex = 8;
-            this.MailLabel.Text = "apple.semen@mail.ru";
-            // 
-            // AllUsedImageLabel
-            // 
-            this.AllUsedImageLabel.AutoSize = true;
-            this.AllUsedImageLabel.Location = new System.Drawing.Point(12, 333);
-            this.AllUsedImageLabel.Name = "AllUsedImageLabel";
-            this.AllUsedImageLabel.Size = new System.Drawing.Size(185, 13);
-            this.AllUsedImageLabel.TabIndex = 10;
-            this.AllUsedImageLabel.Text = "All used images are downloaded from:";
-            // 
-            // GitHubLinkLabel
-            // 
-            this.GitHubLinkLabel.AutoSize = true;
-            this.GitHubLinkLabel.Location = new System.Drawing.Point(124, 114);
-            this.GitHubLinkLabel.Name = "GitHubLinkLabel";
-            this.GitHubLinkLabel.Size = new System.Drawing.Size(175, 13);
-            this.GitHubLinkLabel.TabIndex = 12;
-            this.GitHubLinkLabel.TabStop = true;
-            this.GitHubLinkLabel.Text = "https://github.com/tsukanovsemen";
-            this.GitHubLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GitHubLinkLabel_LinkClicked);
-            // 
-            // Image8LinkLabel
-            // 
-            this.Image8LinkLabel.AutoSize = true;
-            this.Image8LinkLabel.Location = new System.Drawing.Point(203, 333);
-            this.Image8LinkLabel.Name = "Image8LinkLabel";
-            this.Image8LinkLabel.Size = new System.Drawing.Size(102, 13);
-            this.Image8LinkLabel.TabIndex = 13;
-            this.Image8LinkLabel.TabStop = true;
-            this.Image8LinkLabel.Text = "https://icons8.com/";
-            this.Image8LinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Image8LinkLabel_LinkClicked);
-            // 
             // OKButton
             // 
             this.OKButton.Location = new System.Drawing.Point(437, 11);
@@ -193,6 +185,14 @@
             this.OKButton.Text = "OK";
             this.OKButton.UseVisualStyleBackColor = true;
             this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
+            // 
+            // LicenseRichTextBox
+            // 
+            this.LicenseRichTextBox.Location = new System.Drawing.Point(12, 152);
+            this.LicenseRichTextBox.Name = "LicenseRichTextBox";
+            this.LicenseRichTextBox.Size = new System.Drawing.Size(500, 178);
+            this.LicenseRichTextBox.TabIndex = 0;
+            this.LicenseRichTextBox.Text = resources.GetString("LicenseRichTextBox.Text");
             // 
             // AboutForm
             // 
