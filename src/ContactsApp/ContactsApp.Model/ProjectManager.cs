@@ -35,6 +35,7 @@ namespace ContactsApp.Model
             }
             catch (Exception ex)
             {
+                 new ArgumentException(ex.Message);
             }
         }
 
@@ -50,6 +51,7 @@ namespace ContactsApp.Model
             }
             catch (Exception ex)
             {
+                new ArgumentException(ex.Message);
                 return null;
             }
 
