@@ -131,12 +131,12 @@ namespace ContactsApp.Model
         }
 
         /// <summary>
-        /// Создает экземпляр класса <see cref = "Contact">
+        /// Создает экземпляр класса <see cref = "Contact"/>
         /// </summary>
         public Contact() { }
 
         /// <summary>
-        /// Создание контакта, с некоторыми данными.
+        /// Создает экземпляр класса <see cref = "Contact"/>
         /// </summary>
         /// <param name="fullName">Полное имя контакта.</param>
         /// <param name="email">Email контакта.</param>
