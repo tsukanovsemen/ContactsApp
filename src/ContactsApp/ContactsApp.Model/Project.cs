@@ -50,7 +50,8 @@ namespace ContactsApp.Model
             List<Contact> birthdayContact = new List<Contact>();
             foreach (Contact contact in contacts)
             {
-                if (contact.DayOfBirth.Day == DateTime.Today.Day)
+                if (contact.DayOfBirth.Day == DateTime.Today.Day &&
+                    contact.DayOfBirth.Month == DateTime.Today.Month)
                 {
                     birthdayContact.Add(contact);
                 }
