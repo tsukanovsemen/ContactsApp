@@ -36,7 +36,7 @@ namespace ContactsApp.Model
         /// <summary>
         /// Дата рождения контакта.
         /// </summary>
-        private DateTime _dayOfBirth;
+        private DateTime _dateOfBirth;
 
         /// <summary>
         /// ID vkontakte контакта.
@@ -109,7 +109,7 @@ namespace ContactsApp.Model
         {
             get
             {
-                return _dayOfBirth;
+                return _dateOfBirth;
             }
             set
             {
@@ -125,7 +125,7 @@ namespace ContactsApp.Model
                         $"{new DateTime(1900, 1, 1)}");
                 }
 
-                _dayOfBirth = value;
+                _dateOfBirth = value;
             }
         }
 
