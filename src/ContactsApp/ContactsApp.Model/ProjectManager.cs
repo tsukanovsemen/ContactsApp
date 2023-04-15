@@ -29,13 +29,14 @@ namespace ContactsApp.Model
         /// <param name="project"></param>
         public void SaveProject(Project project)
         {
-            try
+            if(File.Exists(_path))
             {
                 File.WriteAllText(_path, JsonConvert.SerializeObject(project));
             }
-            catch (Exception ex)
+            else
             {
-                 new ArgumentException(ex.Message);
+                Directory.CreateDirectory(_path);
+                File.WriteAllText(_path, JsonConvert.SerializeObject(project));
             }
         }
 
