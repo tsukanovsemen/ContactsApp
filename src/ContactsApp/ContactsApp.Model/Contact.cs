@@ -3,6 +3,9 @@ using System.Linq;
 
 namespace ContactsApp.Model
 {
+    /// <summary>
+    /// Класс, описывающий Контакт.
+    /// </summary>
     internal class Contact : ICloneable
     {
         /// <summary>
@@ -217,16 +220,6 @@ namespace ContactsApp.Model
         {
             throw new NotImplementedException();
             return new Contact(FullName, Email, PhoneNumber, DayOfBirth, IdVK);
-        }
-    }
-
-    class MainClass
-    {
-        static void Main(string[] args)
-        {
-            Contact c = new Contact();
-            c.PhoneNumber = "1jwf3232fs`dsr33ve;(sf),09-sfs12312193";
-            Console.WriteLine(c.PhoneNumber);
         }
     }
 }
