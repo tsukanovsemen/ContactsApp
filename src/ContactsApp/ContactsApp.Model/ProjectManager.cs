@@ -11,7 +11,7 @@ namespace ContactsApp.Model
     /// <summary>
     /// Класс, описывающий менеджер проекта.
     /// </summary>
-    internal class ProjectManager
+    public class ProjectManager
     {
         /// <summary>
         /// Путь к файлу для записи.
