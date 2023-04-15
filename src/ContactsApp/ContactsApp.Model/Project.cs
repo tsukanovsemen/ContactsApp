@@ -40,7 +40,7 @@ namespace ContactsApp.Model
         /// <returns>Отсортированный список всех контактов.</returns>
         public List<Contact> SortContactsByName(List<Contact> contacts)
         {
-            contacts.Sort((x, y) => x.FullName.CompareTo(y.FullName));
+            contacts.Sort((contact, nextContact) => contact.FullName.CompareTo(nextContact.FullName));
             return contacts;
         }
 

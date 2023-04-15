@@ -206,8 +206,9 @@ namespace ContactsApp.Model
         /// <returns>Выходная строка.</returns>
         private string FilterStringPhoneNumber(string value)
         {
-            string filteredString = new string(value.Where(c => char.IsDigit(c)
-            || c == '+' || c == '(' || c == ')' || c == '-' || c == ' ').ToArray());
+            string filteredString = new string(value.Where(character => char.IsDigit(character)
+            || character == '+' || character == '(' || character == ')' 
+            || character == '-' || character == ' ').ToArray());
             return filteredString;
         }
 
@@ -218,8 +219,7 @@ namespace ContactsApp.Model
         /// <exception cref="NotImplementedException"></exception>
         public object Clone()
         {
-            throw new NotImplementedException();
             return new Contact(FullName, Email, PhoneNumber, DayOfBirth, IdVK);
         }
-    }
+    } 
 }
