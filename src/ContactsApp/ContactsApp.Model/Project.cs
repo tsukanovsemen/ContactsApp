@@ -14,20 +14,7 @@ namespace ContactsApp.Model
         /// <summary>
         /// Список всех контактов.
         /// </summary>
-        private List<Contact> _contacts;
-
-        /// <summary>
-        /// Список всех контактов.
-        /// </summary>
-        public List<Contact> Contacts { get; private set; }
-
-        /// <summary>
-        /// Создание контактов.
-        /// </summary>
-        public Project()
-        {
-            Contacts = new List<Contact>();
-        }
+        public List<Contact> Contacts { get; private set; } = new List<Contact>();
 
         /// <summary>
         /// Сортировка контактов по имени.
