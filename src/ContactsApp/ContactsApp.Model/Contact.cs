@@ -206,10 +206,8 @@ namespace ContactsApp.Model
         /// <returns>Выходная строка.</returns>
         private string FilterStringPhoneNumber(string value)
         {
-            string filteredString = new string(value.Where(character => char.IsDigit(character)
-            || character == '+' || character == '(' || character == ')' 
-            || character == '-' || character == ' ').ToArray());
-            return filteredString;
+            string allowedChars = "1234567890+()- ";
+            return new string(value.Where(character => allowedChars.Contains(character)).ToArray());
         }
 
         /// <summary>
