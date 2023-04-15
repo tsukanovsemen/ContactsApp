@@ -51,11 +51,6 @@ namespace ContactsApp.Model
             get { return _fullName; }
             set
             {
-                if (value.Length <= 0)
-                {
-                    throw new ArgumentException("The length of FullName must be greater then 0 characters.");
-                }
-
                 if (value.Length > _maxNameAndEmailLength)
                 {
                     throw new ArgumentException(
@@ -74,11 +69,6 @@ namespace ContactsApp.Model
             get { return _email; }
             set
             {
-                if (value.Length <= 0)
-                {
-                    throw new ArgumentException("The length of email must be greater then 0 characters.");
-                }
-
                 if (value.Length >= _maxNameAndEmailLength)
                 {
                     throw new ArgumentException(
@@ -97,11 +87,6 @@ namespace ContactsApp.Model
             get { return _phoneNumber; }
             set
             {
-                if (value.Length <= 0)
-                {
-                    throw new ArgumentException("The length of PhoneNumber must be greater then 0.");
-                }
-
                 _phoneNumber = FilterStringPhoneNumber(value);
             }
         }
@@ -136,11 +121,6 @@ namespace ContactsApp.Model
             get { return _idVK; }
             set
             {
-                if (value.Length <= 0)
-                {
-                    throw new ArgumentException("The length of IdVK must be greater then 0.");
-                }
-
                 if (value.Length > 50)
                 {
                     throw new ArgumentException($"The length of IdVK must be less then {_maxIdVKLength} characters.");
