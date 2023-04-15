@@ -61,7 +61,7 @@ namespace ContactsApp.Model
                         $"{_maxNameAndEmailLength} characters.");
                 }
 
-                _fullName = ContactsAppService.FirstCharactersToUpperCase(value);
+                _fullName = StringTools.FirstCharactersToUpperCase(value);
             }
         }
 
@@ -98,14 +98,14 @@ namespace ContactsApp.Model
             }
             set
             {
-                _phoneNumber = ContactsAppService.FilterStringPhoneNumber(value);
+                _phoneNumber = StringTools.FilterStringPhoneNumber(value);
             }
         }
 
         /// <summary>
         /// Дата рождения контакта.
         /// </summary>
-        public DateTime DayOfBirth
+        public DateTime DateOfBirth
         {
             get
             {
@@ -161,19 +161,19 @@ namespace ContactsApp.Model
         /// <param name="fullName">Полное имя контакта.</param>
         /// <param name="email">Email контакта.</param>
         /// <param name="phoneNumber">Телефонный номер.</param>
-        /// <param name="dayOfBirth">Дата рождения.</param>
+        /// <param name="dateOfBirth">Дата рождения.</param>
         /// <param name="idVK">ID контакта.</param>
         public Contact(
             string fullName,
             string email,
             string phoneNumber,
-            DateTime dayOfBirth,
+            DateTime dateOfBirth,
             string idVK)
         {
             FullName = fullName;
             Email = email;
             PhoneNumber = phoneNumber;
-            DayOfBirth = dayOfBirth;
+            DateOfBirth = dateOfBirth;
             IdVK = idVK;
         }
 
@@ -181,10 +181,9 @@ namespace ContactsApp.Model
         /// Реализует интерфейс ICloneable.
         /// </summary>
         /// <returns>Объект с заданными полями.</returns>
-        /// <exception cref="NotImplementedException"></exception>
         public object Clone()
         {
-            return new Contact(FullName, Email, PhoneNumber, DayOfBirth, IdVK);
+            return new Contact(FullName, Email, PhoneNumber, DateOfBirth, IdVK);
         }
     }
 }

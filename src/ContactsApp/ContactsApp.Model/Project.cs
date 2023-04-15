@@ -33,13 +33,13 @@ namespace ContactsApp.Model
         /// </summary>
         /// <param name="contacts">Список всех контактов.</param>
         /// <returns>Список именниников.</returns>
-        public List<Contact> FindBirthdayBoy(List<Contact> contacts)
+        public List<Contact> FindBirthdayContact(List<Contact> contacts)
         {
             List<Contact> birthdayContact = new List<Contact>();
             foreach (Contact contact in contacts)
             {
-                if (contact.DayOfBirth.Day == DateTime.Today.Day &&
-                    contact.DayOfBirth.Month == DateTime.Today.Month)
+                if (contact.DateOfBirth.Day == DateTime.Today.Day &&
+                    contact.DateOfBirth.Month == DateTime.Today.Month)
                 {
                     birthdayContact.Add(contact);
                 }

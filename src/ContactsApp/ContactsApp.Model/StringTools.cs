@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ContactsApp.Model
 {
-    public class ContactsAppService
+    /// <summary>
+    /// Сервисный класс для преобразования строк в Contact.
+    /// </summary>
+    public class StringTools
     {
         /// <summary>
         /// Преобразует первые символы слов в заглавные.
@@ -37,6 +40,5 @@ namespace ContactsApp.Model
             return new string(value.Where(character =>
             allowedChars.Contains(character)).ToArray());
         }
-
     }
 }
