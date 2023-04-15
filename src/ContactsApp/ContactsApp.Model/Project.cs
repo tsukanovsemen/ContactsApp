@@ -9,7 +9,7 @@ namespace ContactsApp.Model
     /// <summary>
     /// Класс, описывающий проект.
     /// </summary>
-    internal class Project
+    public class Project
     {
         /// <summary>
         /// Список всех контактов.
@@ -19,11 +19,7 @@ namespace ContactsApp.Model
         /// <summary>
         /// Список всех контактов.
         /// </summary>
-        public List<Contact> Contacts
-        {
-            get { return _contacts; }
-            set { _contacts = value; }
-        }
+        public List<Contact> Contacts { get; private set; }
 
         /// <summary>
         /// Создание контактов.
@@ -51,16 +47,16 @@ namespace ContactsApp.Model
         /// <returns>Список именниников.</returns>
         public List<Contact> FindBirthdayBoy(List<Contact> contacts)
         {
-            List<Contact> birthdayBoys = new List<Contact>();
+            List<Contact> birthdayContact = new List<Contact>();
             foreach (Contact contact in contacts)
             {
-                if (contact.DayOfBirth == DateTime.Now)
+                if (contact.DayOfBirth.Day == DateTime.Today.Day)
                 {
-                    birthdayBoys.Add(contact);
+                    birthdayContact.Add(contact);
                 }
             }
 
-            return birthdayBoys;
+            return birthdayContact;
         }
 
         /// <summary>
