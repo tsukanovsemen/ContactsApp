@@ -16,7 +16,8 @@ namespace ContactsApp.Model
         /// <summary>
         /// Путь к особой системной папке.
         /// </summary>
-        private static string _appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+        private static string _appData =
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
         /// <summary>
         /// Путь к папке файла.
@@ -26,7 +27,7 @@ namespace ContactsApp.Model
         /// <summary>
         /// Путь к файлу.
         /// </summary>
-        private static string _fullPath = $@"{_appData}\Tsukanov\ContactsApp\data.json";
+        private static string _fullPath = $@"{_path}\data.json";
 
         /// <summary>
         /// Сохранение объекта Project в файл.

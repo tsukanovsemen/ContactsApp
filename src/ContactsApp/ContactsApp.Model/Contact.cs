@@ -48,13 +48,17 @@ namespace ContactsApp.Model
         /// </summary>
         public string FullName
         {
-            get { return _fullName; }
+            get
+            {
+                return _fullName;
+            }
             set
             {
                 if (value.Length > _maxNameAndEmailLength)
                 {
                     throw new ArgumentException(
-                        $"The length of FullName must be less then {_maxNameAndEmailLength} characters.");
+                        $"The length of FullName must be less then " +
+                        $"{_maxNameAndEmailLength} characters.");
                 }
 
                 _fullName = FirstCharactersToUpperCase(value);
@@ -66,13 +70,17 @@ namespace ContactsApp.Model
         /// </summary>
         public string Email
         {
-            get { return _email; }
+            get
+            {
+                return _email;
+            }
             set
             {
                 if (value.Length >= _maxNameAndEmailLength)
                 {
                     throw new ArgumentException(
-                        $"The length of email must be less then {_maxNameAndEmailLength} characters.");
+                        $"The length of email must be less then " +
+                        $"{_maxNameAndEmailLength} characters.");
                 }
 
                 _email = value.ToLower();
@@ -84,7 +92,10 @@ namespace ContactsApp.Model
         /// </summary>
         public string PhoneNumber
         {
-            get { return _phoneNumber; }
+            get
+            {
+                return _phoneNumber;
+            }
             set
             {
                 _phoneNumber = FilterStringPhoneNumber(value);
@@ -96,17 +107,22 @@ namespace ContactsApp.Model
         /// </summary>
         public DateTime DayOfBirth
         {
-            get { return _dayOfBirth; }
+            get
+            {
+                return _dayOfBirth;
+            }
             set
             {
                 if (value > DateTime.Now)
                 {
-                    throw new ArgumentException($"The date must be less then {DateTime.Now}.");
+                    throw new ArgumentException($"The date must be less then " +
+                        $"{DateTime.Now}.");
                 }
 
                 if (value < new DateTime(1900, 1, 1))
                 {
-                    throw new ArgumentException($"The date must be greater then {new DateTime(1900, 1, 1)}");
+                    throw new ArgumentException($"The date must be greater then " +
+                        $"{new DateTime(1900, 1, 1)}");
                 }
 
                 _dayOfBirth = value;
@@ -118,12 +134,16 @@ namespace ContactsApp.Model
         /// </summary>
         public string IdVK
         {
-            get { return _idVK; }
+            get
+            {
+                return _idVK;
+            }
             set
             {
                 if (value.Length > 50)
                 {
-                    throw new ArgumentException($"The length of IdVK must be less then {_maxIdVKLength} characters.");
+                    throw new ArgumentException($"The length of IdVK must be less then " +
+                        $"{_maxIdVKLength} characters.");
                 }
 
                 _idVK = value;
@@ -143,7 +163,8 @@ namespace ContactsApp.Model
         /// <param name="phoneNumber">Телефонный номер.</param>
         /// <param name="dayOfBirth">Дата рождения.</param>
         /// <param name="idVK">ID контакта.</param>
-        public Contact(string fullName, string email, string phoneNumber, DateTime dayOfBirth, string idVK)
+        public Contact(string fullName, string email,
+            string phoneNumber, DateTime dayOfBirth, string idVK)
         {
             FullName = fullName;
             Email = email;
@@ -160,7 +181,7 @@ namespace ContactsApp.Model
         private string FirstCharactersToUpperCase(string value)
         {
             string[] names = value.Split(' ');
-           
+
             for (int i = 0; i < names.Length; i++)
             {
                 var name = names[i];
@@ -178,7 +199,8 @@ namespace ContactsApp.Model
         private string FilterStringPhoneNumber(string value)
         {
             string allowedChars = "1234567890+()- ";
-            return new string(value.Where(character => allowedChars.Contains(character)).ToArray());
+            return new string(value.Where(character =>
+            allowedChars.Contains(character)).ToArray());
         }
 
         /// <summary>
@@ -190,5 +212,5 @@ namespace ContactsApp.Model
         {
             return new Contact(FullName, Email, PhoneNumber, DayOfBirth, IdVK);
         }
-    } 
+    }
 }
