@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ContactsApp.Model
 {
-    internal class Contact
+    internal class Contact : ICloneable
     {
         /// <summary>
         /// Полное имя контакта. 
@@ -27,18 +23,22 @@ namespace ContactsApp.Model
         /// <summary>
         /// Дата рождения контакта.
         /// </summary>
-        private string _dayOfBirth;
+        private DateTime _dayOfBirth;
 
         /// <summary>
         /// ID vkontakte контакта.
         /// </summary>
         private string _idVK;
 
+        /// <summary>
+        /// Максимальное значение длины полного имени и email.
+        /// </summary>
+        private const int _maxNameAndEmailLength = 100;
 
         /// <summary>
-        /// Максимальное значение длины полного имени.
+        /// Максимальное значение длины Id VK.
         /// </summary>
-        private const int _maxFullNameAndEmailLength = 100;
+        private const int _maxIdVKLength = 50;
 
         /// <summary>
         /// Полное имя контакта.
@@ -53,10 +53,10 @@ namespace ContactsApp.Model
                     throw new ArgumentException("The length of FullName must be greater then 0 characters.");
                 }
 
-                if (value.Length > _maxFullNameAndEmailLength)
+                if (value.Length > _maxNameAndEmailLength)
                 {
                     throw new ArgumentException(
-                        $"The length of FullName must be less then {_maxFullNameAndEmailLength} characters.");
+                        $"The length of FullName must be less then {_maxNameAndEmailLength} characters.");
                 }
 
                 _fullName = FirstCharactersToUpperCase(value);
@@ -76,14 +76,97 @@ namespace ContactsApp.Model
                     throw new ArgumentException("The length of email must be greater then 0 characters.");
                 }
 
-                if (value.Length >= _maxFullNameAndEmailLength)
+                if (value.Length >= _maxNameAndEmailLength)
                 {
                     throw new ArgumentException(
-                        $"The length of email must be less then {_maxFullNameAndEmailLength} characters.");
+                        $"The length of email must be less then {_maxNameAndEmailLength} characters.");
                 }
 
                 _email = value.ToLower();
             }
+        }
+
+        /// <summary>
+        /// Телефонный номер контакта.
+        /// </summary>
+        public string PhoneNumber
+        {
+            get { return _phoneNumber; }
+            set
+            {
+                if (value.Length <= 0)
+                {
+                    throw new ArgumentException("The length of PhoneNumber must be greater then 0.");
+                }
+
+                _phoneNumber = FilterStringPhoneNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Дата рождения контакта.
+        /// </summary>
+        public DateTime DayOfBirth
+        {
+            get { return _dayOfBirth; }
+            set
+            {
+                if (value > DateTime.Now)
+                {
+                    throw new ArgumentException($"The date must be less then {DateTime.Now}.");
+                }
+
+                if (value < new DateTime(1900, 1, 1))
+                {
+                    throw new ArgumentException($"The date must be greater then {new DateTime(1900, 1, 1)}");
+                }
+
+                _dayOfBirth = value;
+            }
+        }
+
+        /// <summary>
+        /// ID vkontakte контакта.
+        /// </summary>
+        public string IdVK
+        {
+            get { return _idVK; }
+            set
+            {
+                if (value.Length <= 0)
+                {
+                    throw new ArgumentException("The length of IdVK must be greater then 0.");
+                }
+
+                if (value.Length > 50)
+                {
+                    throw new ArgumentException($"The length of IdVK must be less then {_maxIdVKLength} characters.");
+                }
+
+                _idVK = value;
+            }
+        }
+
+        /// <summary>
+        /// Пустой конструктор класса.
+        /// </summary>
+        public Contact() { }
+
+        /// <summary>
+        /// Создание контакта, с некоторыми данными.
+        /// </summary>
+        /// <param name="fullName">Полное имя контакта.</param>
+        /// <param name="email">Email контакта.</param>
+        /// <param name="phoneNumber">Телефонный номер.</param>
+        /// <param name="dayOfBirth">Дата рождения.</param>
+        /// <param name="idVK">ID контакта.</param>
+        public Contact(string fullName, string email, string phoneNumber, DateTime dayOfBirth, string idVK)
+        {
+            FullName = fullName;
+            Email = email;
+            PhoneNumber = phoneNumber;
+            DayOfBirth = dayOfBirth;
+            IdVK = idVK;
         }
 
         /// <summary>
@@ -112,15 +195,38 @@ namespace ContactsApp.Model
 
             return resultLine;
         }
+
+        /// <summary>
+        /// Фильтрует строку символов телефонного номера.
+        /// </summary>
+        /// <param name="value">Входная строка символов.</param>
+        /// <returns>Выходная строка.</returns>
+        private string FilterStringPhoneNumber(string value)
+        {
+            string filteredString = new string(value.Where(c => char.IsDigit(c)
+            || c == '+' || c == '(' || c == ')' || c == '-' || c == ' ').ToArray());
+            return filteredString;
+        }
+
+        /// <summary>
+        /// Реализует интерфейс ICloneable.
+        /// </summary>
+        /// <returns>Объект с заданными полями.</returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public object Clone()
+        {
+            throw new NotImplementedException();
+            return new Contact(FullName, Email, PhoneNumber, DayOfBirth, IdVK);
+        }
     }
 
     class MainClass
     {
         static void Main(string[] args)
         {
-            Contact contact = new Contact();
-            contact.FullName = "ibragimov bogdan alimovich";
-            Console.WriteLine(contact.FullName);
+            Contact c = new Contact();
+            c.PhoneNumber = "1jwf3232fs`dsr33ve;(sf),09-sfs12312193";
+            Console.WriteLine(c.PhoneNumber);
         }
     }
 }
