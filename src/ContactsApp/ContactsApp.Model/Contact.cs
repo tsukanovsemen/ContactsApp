@@ -159,24 +159,15 @@ namespace ContactsApp.Model
         /// <returns>Обновленная строка с заглавными символами.</returns>
         private string FirstCharactersToUpperCase(string value)
         {
-            string[] names = value.Split('\u0020');
-            string resultLine = "";
+            string[] names = value.Split(' ');
+           
             for (int i = 0; i < names.Length; i++)
             {
-                char[] tempName = names[i].ToCharArray();
-                tempName[0] = char.ToUpper(tempName[0]);
-                names[i] = new string(tempName);
-                if (i == names.Length - 1)
-                {
-                    resultLine = string.Concat(resultLine, names[i]);
-                }
-                else
-                {
-                    resultLine = string.Concat(resultLine, names[i], " ");
-                }
+                var name = names[i];
+                names[i] = name.Substring(0, 1).ToUpper() + name.Substring(1);
             }
 
-            return resultLine;
+            return String.Join(" ", names);
         }
 
         /// <summary>
