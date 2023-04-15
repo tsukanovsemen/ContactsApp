@@ -9,6 +9,16 @@ namespace ContactsApp.Model
     public class Contact : ICloneable
     {
         /// <summary>
+        /// Максимальное значение длины полного имени и email.
+        /// </summary>
+        private const int _maxNameAndEmailLength = 100;
+
+        /// <summary>
+        /// Максимальное значение длины Id VK.
+        /// </summary>
+        private const int _maxIdVKLength = 50;
+
+        /// <summary>
         /// Полное имя контакта. 
         /// </summary>
         private string _fullName;
@@ -32,16 +42,6 @@ namespace ContactsApp.Model
         /// ID vkontakte контакта.
         /// </summary>
         private string _idVK;
-
-        /// <summary>
-        /// Максимальное значение длины полного имени и email.
-        /// </summary>
-        private const int _maxNameAndEmailLength = 100;
-
-        /// <summary>
-        /// Максимальное значение длины Id VK.
-        /// </summary>
-        private const int _maxIdVKLength = 50;
 
         /// <summary>
         /// Полное имя контакта.
