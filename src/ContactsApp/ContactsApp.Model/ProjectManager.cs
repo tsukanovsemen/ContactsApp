@@ -16,7 +16,8 @@ namespace ContactsApp.Model
         /// <summary>
         /// Путь к файлу для записи.
         /// </summary>
-        private const string _fileName = "C:/users/cukan/source/repos/ContactsApp/ContactsApp.notes/notes.txt";
+        private const string _fileName = "C:/users/cukan/source/repos" +
+            "/ContactsApp/ContactsApp.notes/notes.txt";
 
         /// <summary>
         /// Сохранение объекта Project в файл.
@@ -24,7 +25,7 @@ namespace ContactsApp.Model
         /// <param name="project"></param>
         public void SaveProject(Project project)
         {
-            File.WriteAllText(_fileName,JsonConvert.SerializeObject(project));
+            File.WriteAllText(_fileName, JsonConvert.SerializeObject(project));
         }
 
         /// <summary>
