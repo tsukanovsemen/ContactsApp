@@ -163,8 +163,12 @@ namespace ContactsApp.Model
         /// <param name="phoneNumber">Телефонный номер.</param>
         /// <param name="dayOfBirth">Дата рождения.</param>
         /// <param name="idVK">ID контакта.</param>
-        public Contact(string fullName, string email,
-            string phoneNumber, DateTime dayOfBirth, string idVK)
+        public Contact(
+            string fullName, 
+            string email,
+            string phoneNumber, 
+            DateTime dayOfBirth, 
+            string idVK)
         {
             FullName = fullName;
             Email = email;
