@@ -14,10 +14,14 @@ namespace ContactsApp.Model
     public class ProjectManager
     {
         /// <summary>
-        /// Путь к файлу для записи.
+        /// Путь к особой системной папке.
         /// </summary>
-        private const string _fileName = "C:/users/cukan/source/repos" +
-            "/ContactsApp/ContactsApp.notes/notes.txt";
+        private static string _appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+
+        /// <summary>
+        /// Путь к файлу.
+        /// </summary>
+        private static string _path = $@"{_appData}\Roaming\ContactsApp\data.json";
 
         /// <summary>
         /// Сохранение объекта Project в файл.
@@ -25,7 +29,13 @@ namespace ContactsApp.Model
         /// <param name="project"></param>
         public void SaveProject(Project project)
         {
-            File.WriteAllText(_fileName, JsonConvert.SerializeObject(project));
+            try
+            {
+                File.WriteAllText(_path, JsonConvert.SerializeObject(project));
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         /// <summary>
@@ -34,7 +44,15 @@ namespace ContactsApp.Model
         /// <returns></returns>
         public Project LoadProject()
         {
-            return JsonConvert.DeserializeObject<Project>(File.ReadAllText(_fileName));
+            try
+            {
+                return JsonConvert.DeserializeObject<Project>(File.ReadAllText(_path));
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
         }
     }
 }
