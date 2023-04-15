@@ -151,7 +151,7 @@ namespace ContactsApp.Model
         }
 
         /// <summary>
-        /// Пустой конструктор класса.
+        /// Создает экземпляр класса </cref Contact>
         /// </summary>
         public Contact() { }
 
