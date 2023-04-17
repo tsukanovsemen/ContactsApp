@@ -122,6 +122,7 @@
             this.RemoveContactButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.RemoveContactButton.TabIndex = 2;
             this.RemoveContactButton.TabStop = false;
+            this.RemoveContactButton.Click += new System.EventHandler(this.RemoveContactButton_Click);
             this.RemoveContactButton.MouseEnter += new System.EventHandler(this.RemoveContactButton_MouseEnter);
             this.RemoveContactButton.MouseLeave += new System.EventHandler(this.RemoveContactButton_MouseLeave);
             // 
