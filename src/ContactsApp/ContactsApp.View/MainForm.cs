@@ -11,6 +11,9 @@ using System.Windows.Forms;
 
 namespace ContactsApp.View
 {
+    /// <summary>
+    /// Класс, описывающий главное окно.
+    /// </summary>
     public partial class MainForm : Form
     {
         /// <summary>
@@ -18,6 +21,9 @@ namespace ContactsApp.View
         /// </summary>
         private Project _project;
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref = "MainForm"/>
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
@@ -41,19 +47,13 @@ namespace ContactsApp.View
         /// </summary>
         private void AddContact()
         {
-            Random rand = new Random();
-            char[] letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
-            string word = "";
-
-            for (int i = 0; i < 10; i++)
-            {
-                int letterNum = rand.Next(0, letters.Length - 1);
-                word += letters[letterNum];
-            }
-
-            DateTime date = new DateTime(2001, 6, 11);
-            _project.Contacts.Add(new Contact(word, word,
-                "8(800)-555-35-35", date, word));
+            string fullName = ContactFactory.GenerateRandomName();
+            string email = ContactFactory.GenerateEmail(fullName);
+            string phoneNumber = ContactFactory.GenerateRandomPhoneNumber();
+            DateTime date = ContactFactory.GenerateRandomDate();
+            string idVK = ContactFactory.GenerateIDVK(fullName);
+            _project.Contacts.Add(new Contact(fullName, email,
+                phoneNumber, date, idVK));
         }
 
         /// <summary>
@@ -64,6 +64,41 @@ namespace ContactsApp.View
         {
             ContactsListBox.Items.RemoveAt(index);
             _project.Contacts.RemoveAt(index);
+        }
+
+        /// <summary>
+        /// Обновляет правую панель главного окна, в зависимости от выбранного контакта.
+        /// </summary>
+        /// <param name="index">Индекс выбранного контакта.</param>
+        private void UpdateSelectedContact(int index)
+        {
+            if (index == -1)
+            {
+                CleareSelectedContact();
+            }
+            else
+            {
+                FullNameTextBox.Text = _project.Contacts[index].FullName;
+                EmailTextBox.Text = _project.Contacts[index].Email;
+                PhoneNumbTextBox.Text = _project.Contacts[index].PhoneNumber;
+                string date = _project.Contacts[index].DateOfBirth.Year.ToString() + "." +
+                    _project.Contacts[index].DateOfBirth.Month.ToString() + "." +
+                    _project.Contacts[index].DateOfBirth.Day.ToString();
+                DateBirthTextBox.Text = date;
+                VKTextBox.Text = _project.Contacts[index].IdVK;
+            }
+        }
+
+        /// <summary>
+        /// Очищает правую панель окна.
+        /// </summary>
+        private void CleareSelectedContact()
+        {
+            FullNameTextBox.Text = "";
+            EmailTextBox.Text = "";
+            PhoneNumbTextBox.Text = "";
+            DateBirthTextBox.Text = "";
+            VKTextBox.Text = "";
         }
 
         private void FullNameTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -127,7 +162,7 @@ namespace ContactsApp.View
             AddContactButton.BackColor = Color.White;
         }
 
-        private void AddContactButton_Click_1(object sender, EventArgs e)
+        private void AddContactButton_Click(object sender, EventArgs e)
         {
             //var form = new ContactForm();
             //form.ShowDialog();
@@ -152,13 +187,19 @@ namespace ContactsApp.View
             }
             string message = "Do you really want to remove " +
                              ContactsListBox.Items[ContactsListBox.SelectedIndex] + "?";
+            string title = "Caution!";
 
-            if (MessageBox.Show(message, "", MessageBoxButtons.OKCancel,
+            if (MessageBox.Show(message, title, MessageBoxButtons.OKCancel,
                     MessageBoxIcon.Question) == DialogResult.OK)
             {
                 RemoveContact(ContactsListBox.SelectedIndex);
                 UpdateListBox();
             }
+        }
+
+        private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateSelectedContact(ContactsListBox.SelectedIndex);
         }
     }
 }

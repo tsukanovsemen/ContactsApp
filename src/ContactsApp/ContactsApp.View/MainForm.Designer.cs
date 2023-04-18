@@ -151,7 +151,7 @@
             this.AddContactButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.AddContactButton.TabIndex = 4;
             this.AddContactButton.TabStop = false;
-            this.AddContactButton.Click += new System.EventHandler(this.AddContactButton_Click_1);
+            this.AddContactButton.Click += new System.EventHandler(this.AddContactButton_Click);
             this.AddContactButton.MouseEnter += new System.EventHandler(this.AddContactButton_MouseEnter_1);
             this.AddContactButton.MouseLeave += new System.EventHandler(this.AddContactButton_MouseLeave_1);
             // 
@@ -176,21 +176,11 @@
             this.ContactsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.ContactsListBox.FormattingEnabled = true;
             this.ContactsListBox.IntegralHeight = false;
-            this.ContactsListBox.Items.AddRange(new object[] {
-            "Макаров Богдан Захарович",
-            "Зайцева Валерия Андреевна",
-            "Журавлева Елизавета Артёмовна",
-            "Никитин Герман Егорович",
-            "Васильев Константин Адамович",
-            "Захарова Василиса Фёдоровна",
-            "Еремина Ирина Тимофеевна",
-            "Комаров Олег Кириллович",
-            "Воронина София Александровна",
-            "Кузнецов Константин Александрович"});
             this.ContactsListBox.Location = new System.Drawing.Point(3, 29);
             this.ContactsListBox.Name = "ContactsListBox";
             this.ContactsListBox.Size = new System.Drawing.Size(238, 377);
             this.ContactsListBox.TabIndex = 0;
+            this.ContactsListBox.SelectedIndexChanged += new System.EventHandler(this.ContactsListBox_SelectedIndexChanged);
             // 
             // PersonInfoPanel
             // 
@@ -312,7 +302,6 @@
             this.PhoneNumbTextBox.Name = "PhoneNumbTextBox";
             this.PhoneNumbTextBox.Size = new System.Drawing.Size(175, 20);
             this.PhoneNumbTextBox.TabIndex = 6;
-            this.PhoneNumbTextBox.Text = "+7 (999) 777-77-77";
             this.PhoneNumbTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PhoneNumbTextBox_KeyPress);
             // 
             // PhoneNumbLabel
@@ -333,7 +322,6 @@
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.Size = new System.Drawing.Size(432, 20);
             this.EmailTextBox.TabIndex = 4;
-            this.EmailTextBox.Text = "makar@mail.ru";
             this.EmailTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EmailTextBox_KeyPress);
             // 
             // EmailLabel
@@ -354,7 +342,6 @@
             this.FullNameTextBox.Name = "FullNameTextBox";
             this.FullNameTextBox.Size = new System.Drawing.Size(432, 20);
             this.FullNameTextBox.TabIndex = 2;
-            this.FullNameTextBox.Text = "Макаров Богдан Захарович";
             this.FullNameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FullNameTextBox_KeyPress);
             // 
             // FullNameLabel
