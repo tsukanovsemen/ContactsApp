@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.AddContactPanel = new System.Windows.Forms.Panel();
+            this.DateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.OKCancelPanel = new System.Windows.Forms.Panel();
             this.OKButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
@@ -43,7 +44,6 @@
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.AddPhotoPictureBox = new System.Windows.Forms.PictureBox();
-            this.DateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.AddContactPanel.SuspendLayout();
             this.OKCancelPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AddPhotoButton)).BeginInit();
@@ -70,6 +70,14 @@
             this.AddContactPanel.Name = "AddContactPanel";
             this.AddContactPanel.Size = new System.Drawing.Size(524, 351);
             this.AddContactPanel.TabIndex = 0;
+            // 
+            // DateTimePicker
+            // 
+            this.DateTimePicker.Location = new System.Drawing.Point(109, 202);
+            this.DateTimePicker.Name = "DateTimePicker";
+            this.DateTimePicker.Size = new System.Drawing.Size(175, 20);
+            this.DateTimePicker.TabIndex = 23;
+            this.DateTimePicker.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
             // 
             // OKCancelPanel
             // 
@@ -110,7 +118,7 @@
             this.AddPhotoButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.AddPhotoButton.TabIndex = 21;
             this.AddPhotoButton.TabStop = false;
-            this.AddPhotoButton.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
+            this.AddPhotoButton.MouseEnter += new System.EventHandler(this.AddPhotoButton_MouseEnter);
             this.AddPhotoButton.MouseLeave += new System.EventHandler(this.AddPhotoButton_MouseLeave);
             // 
             // VKTextBox
@@ -119,6 +127,7 @@
             this.VKTextBox.Name = "VKTextBox";
             this.VKTextBox.Size = new System.Drawing.Size(175, 20);
             this.VKTextBox.TabIndex = 20;
+            this.VKTextBox.TextChanged += new System.EventHandler(this.VKTextBox_TextChanged);
             // 
             // VKLabel
             // 
@@ -147,6 +156,7 @@
             this.PhoneNumbTextBox.Size = new System.Drawing.Size(175, 20);
             this.PhoneNumbTextBox.TabIndex = 16;
             this.PhoneNumbTextBox.Text = "+7 (999) 777-77-77";
+            this.PhoneNumbTextBox.TextChanged += new System.EventHandler(this.PhoneNumbTextBox_TextChanged);
             // 
             // PhoneNumbLabel
             // 
@@ -167,6 +177,7 @@
             this.EmailTextBox.Size = new System.Drawing.Size(403, 20);
             this.EmailTextBox.TabIndex = 14;
             this.EmailTextBox.Text = "makar@mail.ru";
+            this.EmailTextBox.TextChanged += new System.EventHandler(this.EmailTextBox_TextChanged);
             // 
             // EmailLabel
             // 
@@ -187,6 +198,7 @@
             this.FullNameTextBox.Size = new System.Drawing.Size(403, 20);
             this.FullNameTextBox.TabIndex = 12;
             this.FullNameTextBox.Text = "Макаров Богдан Захарович";
+            this.FullNameTextBox.TextChanged += new System.EventHandler(this.FullNameTextBox_TextChanged);
             // 
             // FullNameLabel
             // 
@@ -206,13 +218,6 @@
             this.AddPhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.AddPhotoPictureBox.TabIndex = 0;
             this.AddPhotoPictureBox.TabStop = false;
-            // 
-            // DateTimePicker
-            // 
-            this.DateTimePicker.Location = new System.Drawing.Point(109, 202);
-            this.DateTimePicker.Name = "DateTimePicker";
-            this.DateTimePicker.Size = new System.Drawing.Size(175, 20);
-            this.DateTimePicker.TabIndex = 23;
             // 
             // ContactForm
             // 
