@@ -77,6 +77,7 @@
             this.DateTimePicker.Name = "DateTimePicker";
             this.DateTimePicker.Size = new System.Drawing.Size(175, 20);
             this.DateTimePicker.TabIndex = 23;
+            this.DateTimePicker.Value = new System.DateTime(2023, 4, 24, 19, 15, 11, 0);
             this.DateTimePicker.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
             // 
             // OKCancelPanel
@@ -155,7 +156,6 @@
             this.PhoneNumbTextBox.Name = "PhoneNumbTextBox";
             this.PhoneNumbTextBox.Size = new System.Drawing.Size(175, 20);
             this.PhoneNumbTextBox.TabIndex = 16;
-            this.PhoneNumbTextBox.Text = "+7 (999) 777-77-77";
             this.PhoneNumbTextBox.TextChanged += new System.EventHandler(this.PhoneNumbTextBox_TextChanged);
             // 
             // PhoneNumbLabel
@@ -176,7 +176,6 @@
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.Size = new System.Drawing.Size(403, 20);
             this.EmailTextBox.TabIndex = 14;
-            this.EmailTextBox.Text = "makar@mail.ru";
             this.EmailTextBox.TextChanged += new System.EventHandler(this.EmailTextBox_TextChanged);
             // 
             // EmailLabel
@@ -197,7 +196,6 @@
             this.FullNameTextBox.Name = "FullNameTextBox";
             this.FullNameTextBox.Size = new System.Drawing.Size(403, 20);
             this.FullNameTextBox.TabIndex = 12;
-            this.FullNameTextBox.Text = "Макаров Богдан Захарович";
             this.FullNameTextBox.TextChanged += new System.EventHandler(this.FullNameTextBox_TextChanged);
             // 
             // FullNameLabel
@@ -230,6 +228,7 @@
             this.MinimizeBox = false;
             this.Name = "ContactForm";
             this.ShowIcon = false;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ContactForm_FormClosing);
             this.AddContactPanel.ResumeLayout(false);
             this.AddContactPanel.PerformLayout();
             this.OKCancelPanel.ResumeLayout(false);

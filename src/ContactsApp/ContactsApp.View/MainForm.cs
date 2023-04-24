@@ -21,6 +21,12 @@ namespace ContactsApp.View
         /// </summary>
         private Project _project;
 
+        public Project Project
+        {
+            get { return _project; }
+            set { _project = value; }
+        }
+
         /// <summary>
         /// Создает экземпляр класса <see cref = "MainForm"/>
         /// </summary>
@@ -45,15 +51,9 @@ namespace ContactsApp.View
         /// <summary>
         /// Добавление нового контакта.
         /// </summary>
-        private void AddContact()
+        private void AddContact(Contact contact)
         {
-            string fullName = ContactFactory.GenerateRandomName();
-            string email = ContactFactory.GenerateEmail(fullName);
-            string phoneNumber = ContactFactory.GenerateRandomPhoneNumber();
-            DateTime date = ContactFactory.GenerateRandomDate();
-            string idVK = ContactFactory.GenerateIDVK(fullName);
-            _project.Contacts.Add(new Contact(fullName, email,
-                phoneNumber, date, idVK));
+            _project.Contacts.Add(contact);
         }
 
         /// <summary>
@@ -164,10 +164,14 @@ namespace ContactsApp.View
 
         private void AddContactButton_Click(object sender, EventArgs e)
         {
-            //var form = new ContactForm();
-            //form.ShowDialog();
-            AddContact();
-            UpdateListBox();
+            var form = new ContactForm();
+            form.ShowDialog();
+            var newContact = form.Contact;
+            if (newContact != null)
+            {
+                AddContact(newContact);
+                UpdateListBox();
+            }
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)

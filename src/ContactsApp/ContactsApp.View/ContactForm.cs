@@ -13,7 +13,10 @@ namespace ContactsApp.View
 {
     public partial class ContactForm : Form
     {
-        private Contact _contact = new Contact();
+        /// <summary>
+        /// Новый контакт, созданный в форме.
+        /// </summary>
+        public Contact Contact { get; private set; } = new Contact();
 
         /// <summary>
         /// Сообщение об ошибке в полном имени контакта.
@@ -40,16 +43,21 @@ namespace ContactsApp.View
         /// </summary>
         private string _idVKError;
 
+        /// <summary>
+        /// Проверка нажата кнопка ОК при закрытии окна или же окно закрывается другим способом.
+        /// </summary>
+        bool _okButtonIsClicked = false;
+
         public ContactForm()
         {
             InitializeComponent();
-            FormBorderStyle = FormBorderStyle.FixedSingle;
-            _contact.FullName = "Цуканов Семен Сергеевич";
-            _contact.Email = "apple.semen@mail.ru";
-            _contact.PhoneNumber = "89095485638";
-            _contact.DateOfBirth = new DateTime(2001, 11, 6);
-            _contact.IdVK = "sematsukanovvv";
-            UpdateForm();
+            //FormBorderStyle = FormBorderStyle.FixedSingle;
+            //Contact.FullName = "Цуканов Семен Сергеевич";
+            //Contact.Email = "apple.semen@mail.ru";
+            //Contact.PhoneNumber = "89095485638";
+            //Contact.DateOfBirth = new DateTime(2001, 11, 6);
+            //Contact.IdVK = "sematsukanovvv";
+            //UpdateForm();
         }
 
         /// <summary>
@@ -57,11 +65,11 @@ namespace ContactsApp.View
         /// </summary>
         private void UpdateForm()
         {
-            FullNameTextBox.Text = _contact.FullName;
-            EmailTextBox.Text = _contact.Email;
-            PhoneNumbTextBox.Text = _contact.PhoneNumber;
-            DateTimePicker.Text = _contact.DateOfBirth.ToString();
-            VKTextBox.Text = _contact.IdVK;
+            FullNameTextBox.Text = Contact.FullName;
+            EmailTextBox.Text = Contact.Email;
+            PhoneNumbTextBox.Text = Contact.PhoneNumber;
+            DateTimePicker.Text = Contact.DateOfBirth.ToString();
+            VKTextBox.Text = Contact.IdVK;
         }
 
         /// <summary>
@@ -107,11 +115,11 @@ namespace ContactsApp.View
         /// </summary>
         private void UpdateContact()
         {
-            _contact.FullName = FullNameTextBox.Text;
-            _contact.Email = EmailTextBox.Text;
-            _contact.PhoneNumber = PhoneNumbTextBox.Text;
-            _contact.DateOfBirth = DateTimePicker.Value;
-            _contact.IdVK = VKTextBox.Text;
+            Contact.FullName = FullNameTextBox.Text;
+            Contact.Email = EmailTextBox.Text;
+            Contact.PhoneNumber = PhoneNumbTextBox.Text;
+            Contact.DateOfBirth = DateTimePicker.Value;
+            Contact.IdVK = VKTextBox.Text;
         }
 
         private void AddPhotoButton_MouseEnter(object sender, EventArgs e)
@@ -131,11 +139,14 @@ namespace ContactsApp.View
             if (CheckFormOnErrors())
             {
                 UpdateContact();
+                _okButtonIsClicked = true;
+                Close();
             }
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
+            Contact = null;
             Close();
         }
 
@@ -143,7 +154,7 @@ namespace ContactsApp.View
         {
             try
             {
-                _contact.FullName = FullNameTextBox.Text;
+                Contact.FullName = FullNameTextBox.Text;
                 FullNameTextBox.BackColor = Color.White;
                 _fullNameError = "";
             }
@@ -158,7 +169,7 @@ namespace ContactsApp.View
         {
             try
             {
-                _contact.Email = EmailTextBox.Text;
+                Contact.Email = EmailTextBox.Text;
                 EmailTextBox.BackColor = Color.White;
                 _emailError = "";
             }
@@ -173,7 +184,7 @@ namespace ContactsApp.View
         {
             try
             {
-                _contact.PhoneNumber = PhoneNumbTextBox.Text;
+                Contact.PhoneNumber = PhoneNumbTextBox.Text;
                 PhoneNumbTextBox.BackColor = Color.White;
                 _phoneNumberError = "";
             }
@@ -188,7 +199,7 @@ namespace ContactsApp.View
         {
             try
             {
-                _contact.DateOfBirth = DateTimePicker.Value;
+                Contact.DateOfBirth = DateTimePicker.Value;
                 DateTimePicker.BackColor = Color.White;
                 _dateOfBirthError = "";
             }
@@ -203,7 +214,7 @@ namespace ContactsApp.View
         {
             try
             {
-                _contact.IdVK = VKTextBox.Text;
+                Contact.IdVK = VKTextBox.Text;
                 VKTextBox.BackColor = Color.White;
                 _idVKError = "";
             }
@@ -211,6 +222,14 @@ namespace ContactsApp.View
             {
                 VKTextBox.BackColor = Color.LightPink;
                 _idVKError = ex.Message;
+            }
+        }
+
+        private void ContactForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(!_okButtonIsClicked)
+            {
+                Contact = null;
             }
         }
     }
