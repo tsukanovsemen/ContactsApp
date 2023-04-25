@@ -74,7 +74,7 @@ namespace ContactsApp.View
         {
             if (index == -1)
             {
-                CleareSelectedContact();
+                ClearSelectedContact();
             }
             else
             {
@@ -92,13 +92,35 @@ namespace ContactsApp.View
         /// <summary>
         /// Очищает правую панель окна.
         /// </summary>
-        private void CleareSelectedContact()
+        private void ClearSelectedContact()
         {
             FullNameTextBox.Text = "";
             EmailTextBox.Text = "";
             PhoneNumbTextBox.Text = "";
             DateBirthTextBox.Text = "";
             VKTextBox.Text = "";
+        }
+
+        /// <summary>
+        /// Редактирование контакта по заданному индексу.
+        /// </summary>
+        /// <param name="index">Индекс редактируемого контакта.</param>
+        private void EditContact(int index)
+        {
+            if (index < 0)
+            {
+                throw new ArgumentException("Index of chosen contact must be greater then 0.");
+            }
+
+            var form = new ContactForm((Contact)_project.Contacts[index].Clone());
+            form.ShowDialog();
+            var editedContact = form.Contact;
+
+            if (editedContact != null)
+            {
+                _project.Contacts.RemoveAt(index);
+                _project.Contacts.Insert(index, editedContact);
+            }
         }
 
         private void FullNameTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -204,6 +226,21 @@ namespace ContactsApp.View
         private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateSelectedContact(ContactsListBox.SelectedIndex);
+        }
+
+        private void EditContactButton_Click(object sender, EventArgs e)
+        {
+            int indexEditedContact = ContactsListBox.SelectedIndex;
+            try
+            {
+                EditContact(indexEditedContact);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            }
+            UpdateListBox();
+            UpdateSelectedContact(indexEditedContact);
         }
     }
 }

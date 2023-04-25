@@ -48,16 +48,26 @@ namespace ContactsApp.View
         /// </summary>
         bool _okButtonIsClicked = false;
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref = "ContactForm"/>
+        /// </summary>
         public ContactForm()
         {
             InitializeComponent();
-            //FormBorderStyle = FormBorderStyle.FixedSingle;
-            //Contact.FullName = "Цуканов Семен Сергеевич";
-            //Contact.Email = "apple.semen@mail.ru";
-            //Contact.PhoneNumber = "89095485638";
-            //Contact.DateOfBirth = new DateTime(2001, 11, 6);
-            //Contact.IdVK = "sematsukanovvv";
-            //UpdateForm();
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+        }
+
+        /// <summary>
+        /// Создает экземпляр класса <see cref = "ContactForm"/>
+        /// Конструктор с параметром, для изменения данных контакта.
+        /// </summary>
+        /// <param name="contact">Редактируемый контакт.</param>
+        public ContactForm(Contact contact)
+        {
+            InitializeComponent();
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Contact = contact;
+            UpdateForm();
         }
 
         /// <summary>
@@ -227,7 +237,7 @@ namespace ContactsApp.View
 
         private void ContactForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(!_okButtonIsClicked)
+            if (!_okButtonIsClicked)
             {
                 Contact = null;
             }

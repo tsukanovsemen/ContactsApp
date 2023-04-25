@@ -137,6 +137,7 @@
             this.EditContactButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.EditContactButton.TabIndex = 3;
             this.EditContactButton.TabStop = false;
+            this.EditContactButton.Click += new System.EventHandler(this.EditContactButton_Click);
             this.EditContactButton.MouseEnter += new System.EventHandler(this.EditContactButton_MouseEnter);
             this.EditContactButton.MouseLeave += new System.EventHandler(this.EditContactButton_MouseLeave);
             // 
