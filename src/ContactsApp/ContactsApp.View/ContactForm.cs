@@ -89,23 +89,23 @@ namespace ContactsApp.View
         private bool CheckFormOnErrors()
         {
             string resultError = "";
-            if (!(_fullNameError == ""))
+            if (!(_fullNameError == null))
             {
                 resultError += _fullNameError + "\n";
             }
-            if (!(_emailError == ""))
+            if (!(_emailError == null))
             {
                 resultError += _emailError + "\n";
             }
-            if (!(_phoneNumberError == ""))
+            if (!(_phoneNumberError == null))
             {
                 resultError += _phoneNumberError + "\n";
             }
-            if (!(_dateOfBirthError == ""))
+            if (!(_dateOfBirthError == null))
             {
                 resultError += _dateOfBirthError + "\n";
             }
-            if (!(_idVKError == ""))
+            if (!(_idVKError == null))
             {
                 resultError += _idVKError + "\n";
             }
@@ -165,14 +165,15 @@ namespace ContactsApp.View
             try
             {
                 Contact.FullName = FullNameTextBox.Text;
-                FullNameTextBox.BackColor = Color.White;
-                _fullNameError = "";
             }
             catch (ArgumentException ex)
             {
                 FullNameTextBox.BackColor = Color.LightPink;
                 _fullNameError = ex.Message;
+                return;
             }
+            FullNameTextBox.BackColor = Color.White;
+            _fullNameError = null;
         }
 
         private void EmailTextBox_TextChanged(object sender, EventArgs e)
@@ -180,14 +181,15 @@ namespace ContactsApp.View
             try
             {
                 Contact.Email = EmailTextBox.Text;
-                EmailTextBox.BackColor = Color.White;
-                _emailError = "";
             }
             catch (ArgumentException ex)
             {
                 EmailTextBox.BackColor = Color.LightPink;
                 _emailError = ex.Message;
+                return;
             }
+            EmailTextBox.BackColor = Color.White;
+            _emailError = null;
         }
 
         private void PhoneNumbTextBox_TextChanged(object sender, EventArgs e)
@@ -195,14 +197,15 @@ namespace ContactsApp.View
             try
             {
                 Contact.PhoneNumber = PhoneNumbTextBox.Text;
-                PhoneNumbTextBox.BackColor = Color.White;
-                _phoneNumberError = "";
             }
             catch (ArgumentException ex)
             {
                 PhoneNumbTextBox.BackColor = Color.LightPink;
                 _phoneNumberError = ex.Message;
+                return;
             }
+            PhoneNumbTextBox.BackColor = Color.White;
+            _phoneNumberError = null;
         }
 
         private void DateTimePicker_ValueChanged(object sender, EventArgs e)
@@ -210,14 +213,15 @@ namespace ContactsApp.View
             try
             {
                 Contact.DateOfBirth = DateTimePicker.Value;
-                DateTimePicker.BackColor = Color.White;
-                _dateOfBirthError = "";
             }
             catch (ArgumentException ex)
             {
                 DateTimePicker.BackColor = Color.LightPink;
                 _dateOfBirthError = ex.Message;
+                return;
             }
+            DateTimePicker.BackColor = Color.White;
+            _dateOfBirthError = null;
         }
 
         private void VKTextBox_TextChanged(object sender, EventArgs e)
@@ -225,14 +229,15 @@ namespace ContactsApp.View
             try
             {
                 Contact.IdVK = VKTextBox.Text;
-                VKTextBox.BackColor = Color.White;
-                _idVKError = "";
             }
             catch (ArgumentException ex)
             {
                 VKTextBox.BackColor = Color.LightPink;
                 _idVKError = ex.Message;
+                return;
             }
+            VKTextBox.BackColor = Color.White;
+            _idVKError = null;
         }
 
         private void ContactForm_FormClosing(object sender, FormClosingEventArgs e)

@@ -171,6 +171,7 @@
             this.FindContactTextBox.Name = "FindContactTextBox";
             this.FindContactTextBox.Size = new System.Drawing.Size(202, 20);
             this.FindContactTextBox.TabIndex = 1;
+            this.FindContactTextBox.TextChanged += new System.EventHandler(this.FindContactTextBox_TextChanged);
             // 
             // ContactsListBox
             // 

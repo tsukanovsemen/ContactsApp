@@ -61,6 +61,11 @@ namespace ContactsApp.Model
                         $"{_maxNameAndEmailLength} characters.");
                 }
 
+                if (value.Length == 0)
+                {
+                    throw new ArgumentException("Field full name must be filled.");
+                }
+
                 _fullName = StringTools.FirstCharactersToUpperCase(value);
             }
         }
@@ -98,7 +103,14 @@ namespace ContactsApp.Model
             }
             set
             {
-                _phoneNumber = StringTools.FilterStringPhoneNumber(value);
+                if (!(value == ""))
+                {
+                    _phoneNumber = StringTools.FilterStringPhoneNumber(value);
+                }
+                else
+                {
+                    _phoneNumber = " ";
+                }
             }
         }
 
@@ -146,7 +158,14 @@ namespace ContactsApp.Model
                         $"{_maxIdVKLength} characters.");
                 }
 
-                _idVK = value;
+                if (!(value == ""))
+                {
+                    _idVK = value;
+                }
+                else
+                {
+                    _idVK = " ";
+                }
             }
         }
 

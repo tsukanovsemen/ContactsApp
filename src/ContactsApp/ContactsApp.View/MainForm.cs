@@ -19,13 +19,9 @@ namespace ContactsApp.View
         /// <summary>
         /// Объект класса Project.
         /// </summary>
-        private Project _project;
+        public Project Project { get; private set; } = new Project();
 
-        public Project Project
-        {
-            get { return _project; }
-            set { _project = value; }
-        }
+        public List<Contact> CurrentContacts { get; private set; }
 
         /// <summary>
         /// Создает экземпляр класса <see cref = "MainForm"/>
@@ -33,7 +29,7 @@ namespace ContactsApp.View
         public MainForm()
         {
             InitializeComponent();
-            _project = new Project();
+            CurrentContacts = Project.Contacts;
         }
 
         /// <summary>
@@ -42,7 +38,7 @@ namespace ContactsApp.View
         private void UpdateListBox()
         {
             ContactsListBox.Items.Clear();
-            foreach (Contact contact in _project.Contacts)
+            foreach (Contact contact in CurrentContacts)
             {
                 ContactsListBox.Items.Add(contact.FullName);
             }
@@ -53,7 +49,8 @@ namespace ContactsApp.View
         /// </summary>
         private void AddContact(Contact contact)
         {
-            _project.Contacts.Add(contact);
+            Project.Contacts.Add(contact);
+            CurrentContacts = Project.Contacts;
         }
 
         /// <summary>
@@ -63,7 +60,7 @@ namespace ContactsApp.View
         private void RemoveContact(int index)
         {
             ContactsListBox.Items.RemoveAt(index);
-            _project.Contacts.RemoveAt(index);
+            Project.Contacts.Remove(CurrentContacts[index]);
         }
 
         /// <summary>
@@ -78,14 +75,14 @@ namespace ContactsApp.View
             }
             else
             {
-                FullNameTextBox.Text = _project.Contacts[index].FullName;
-                EmailTextBox.Text = _project.Contacts[index].Email;
-                PhoneNumbTextBox.Text = _project.Contacts[index].PhoneNumber;
-                string date = _project.Contacts[index].DateOfBirth.Year.ToString() + "." +
-                    _project.Contacts[index].DateOfBirth.Month.ToString() + "." +
-                    _project.Contacts[index].DateOfBirth.Day.ToString();
+                FullNameTextBox.Text = CurrentContacts[index].FullName;
+                EmailTextBox.Text = CurrentContacts[index].Email;
+                PhoneNumbTextBox.Text = CurrentContacts[index].PhoneNumber;
+                string date = CurrentContacts[index].DateOfBirth.Year.ToString() + "." +
+                    CurrentContacts[index].DateOfBirth.Month.ToString() + "." +
+                    CurrentContacts[index].DateOfBirth.Day.ToString();
                 DateBirthTextBox.Text = date;
-                VKTextBox.Text = _project.Contacts[index].IdVK;
+                VKTextBox.Text = CurrentContacts[index].IdVK;
             }
         }
 
@@ -112,14 +109,14 @@ namespace ContactsApp.View
                 throw new ArgumentException("Index of chosen contact must be greater then 0.");
             }
 
-            var form = new ContactForm((Contact)_project.Contacts[index].Clone());
+            var form = new ContactForm((Contact)Project.Contacts[index].Clone());
             form.ShowDialog();
             var editedContact = form.Contact;
 
             if (editedContact != null)
             {
-                _project.Contacts.RemoveAt(index);
-                _project.Contacts.Insert(index, editedContact);
+                Project.Contacts.RemoveAt(index);
+                Project.Contacts.Insert(index, editedContact);
             }
         }
 
@@ -241,6 +238,12 @@ namespace ContactsApp.View
             }
             UpdateListBox();
             UpdateSelectedContact(indexEditedContact);
+        }
+
+        private void FindContactTextBox_TextChanged(object sender, EventArgs e)
+        {
+            CurrentContacts = Project.FindContactsBySubstring(Project.Contacts, FindContactTextBox.Text);
+            UpdateListBox();
         }
     }
 }
