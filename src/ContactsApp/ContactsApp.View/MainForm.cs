@@ -253,5 +253,10 @@ namespace ContactsApp.View
             CurrentContacts = Project.FindContactsBySubstring(Project.Contacts, FindContactTextBox.Text);
             UpdateListBox();
         }
+
+        private void CloseReminderButton_Click(object sender, EventArgs e)
+        {
+            BirthdayPanel.Visible = false;
+        }
     }
 }

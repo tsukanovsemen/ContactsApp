@@ -229,6 +229,7 @@
             this.CloseReminderButton.Size = new System.Drawing.Size(32, 32);
             this.CloseReminderButton.TabIndex = 3;
             this.CloseReminderButton.UseVisualStyleBackColor = true;
+            this.CloseReminderButton.Click += new System.EventHandler(this.CloseReminderButton_Click);
             // 
             // BirthdayBoyLabel
             // 
