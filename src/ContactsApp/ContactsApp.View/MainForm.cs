@@ -29,7 +29,7 @@ namespace ContactsApp.View
         public MainForm()
         {
             InitializeComponent();
-            CurrentContacts = Project.Contacts;
+            UpdateCurrentContacts();
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace ContactsApp.View
         private void AddContact(Contact contact)
         {
             Project.Contacts.Add(contact);
-            CurrentContacts = Project.Contacts;
+            UpdateCurrentContacts();
         }
 
         /// <summary>
@@ -118,6 +118,11 @@ namespace ContactsApp.View
                 Project.Contacts.RemoveAt(index);
                 Project.Contacts.Insert(index, editedContact);
             }
+        }
+
+        public void UpdateCurrentContacts()
+        {
+            CurrentContacts = Project.Contacts;
         }
 
         private void FullNameTextBox_KeyPress(object sender, KeyPressEventArgs e)
