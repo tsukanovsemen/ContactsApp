@@ -74,6 +74,7 @@
             // DateTimePicker
             // 
             this.DateTimePicker.Location = new System.Drawing.Point(109, 202);
+            this.DateTimePicker.MaxDate = new System.DateTime(2023, 4, 28, 0, 0, 0, 0);
             this.DateTimePicker.Name = "DateTimePicker";
             this.DateTimePicker.Size = new System.Drawing.Size(175, 20);
             this.DateTimePicker.TabIndex = 23;

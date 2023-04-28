@@ -168,11 +168,11 @@ namespace ContactsApp.View
             }
             catch (ArgumentException ex)
             {
-                FullNameTextBox.BackColor = Color.LightPink;
+                FullNameTextBox.BackColor = ColorsContactsApp.ColorError;
                 _fullNameError = ex.Message;
                 return;
             }
-            FullNameTextBox.BackColor = Color.White;
+            FullNameTextBox.BackColor = ColorsContactsApp.ColorCorrectly;
             _fullNameError = null;
         }
 
@@ -184,11 +184,11 @@ namespace ContactsApp.View
             }
             catch (ArgumentException ex)
             {
-                EmailTextBox.BackColor = Color.LightPink;
+                EmailTextBox.BackColor = ColorsContactsApp.ColorError;
                 _emailError = ex.Message;
                 return;
             }
-            EmailTextBox.BackColor = Color.White;
+            EmailTextBox.BackColor = ColorsContactsApp.ColorCorrectly;
             _emailError = null;
         }
 
@@ -200,11 +200,11 @@ namespace ContactsApp.View
             }
             catch (ArgumentException ex)
             {
-                PhoneNumbTextBox.BackColor = Color.LightPink;
+                PhoneNumbTextBox.BackColor = ColorsContactsApp.ColorError;
                 _phoneNumberError = ex.Message;
                 return;
             }
-            PhoneNumbTextBox.BackColor = Color.White;
+            PhoneNumbTextBox.BackColor = ColorsContactsApp.ColorCorrectly;
             _phoneNumberError = null;
         }
 
@@ -216,11 +216,11 @@ namespace ContactsApp.View
             }
             catch (ArgumentException ex)
             {
-                DateTimePicker.BackColor = Color.LightPink;
+                DateTimePicker.BackColor = ColorsContactsApp.ColorError;
                 _dateOfBirthError = ex.Message;
                 return;
             }
-            DateTimePicker.BackColor = Color.White;
+            DateTimePicker.BackColor = ColorsContactsApp.ColorCorrectly;
             _dateOfBirthError = null;
         }
 
@@ -232,11 +232,11 @@ namespace ContactsApp.View
             }
             catch (ArgumentException ex)
             {
-                VKTextBox.BackColor = Color.LightPink;
+                VKTextBox.BackColor = ColorsContactsApp.ColorError;
                 _idVKError = ex.Message;
                 return;
             }
-            VKTextBox.BackColor = Color.White;
+            VKTextBox.BackColor = ColorsContactsApp.ColorCorrectly;
             _idVKError = null;
         }
 

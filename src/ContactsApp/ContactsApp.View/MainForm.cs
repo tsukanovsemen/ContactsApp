@@ -21,6 +21,9 @@ namespace ContactsApp.View
         /// </summary>
         public Project Project { get; private set; } = new Project();
 
+        /// <summary>
+        /// Список текущих контактов.
+        /// </summary>
         public List<Contact> CurrentContacts { get; private set; }
 
         /// <summary>
