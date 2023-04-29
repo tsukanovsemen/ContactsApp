@@ -258,6 +258,8 @@ namespace ContactsApp.View
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
             }
             UpdateListBox();
+            UpdateCurrentContacts();
+            CurrentContacts = Project.SortContactsByName(CurrentContacts);
             UpdateSelectedContact(indexEditedContact);
         }
 
