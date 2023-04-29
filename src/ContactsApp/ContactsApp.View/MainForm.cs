@@ -34,7 +34,7 @@ namespace ContactsApp.View
             InitializeComponent();
             UpdateCurrentContacts();
             CurrentContacts = Project.SortContactsByName(CurrentContacts);
-            AddNotifyBirthdayContacts();
+            UpdatePanelBirthdayContacts();
         }
 
         /// <summary>
@@ -75,21 +75,31 @@ namespace ContactsApp.View
         /// <param name="index">Индекс выбранного контакта.</param>
         private void UpdateSelectedContact(int index)
         {
+            Contact contact = CurrentContacts[index];
             if (index == -1)
             {
                 ClearSelectedContact();
             }
             else
             {
-                FullNameTextBox.Text = CurrentContacts[index].FullName;
-                EmailTextBox.Text = CurrentContacts[index].Email;
-                PhoneNumbTextBox.Text = CurrentContacts[index].PhoneNumber;
-                string date = CurrentContacts[index].DateOfBirth.Year.ToString() + "." +
-                    CurrentContacts[index].DateOfBirth.Month.ToString() + "." +
-                    CurrentContacts[index].DateOfBirth.Day.ToString();
-                DateBirthTextBox.Text = date;
-                VKTextBox.Text = CurrentContacts[index].IdVK;
+                UpdateSelectedContact(contact);
             }
+        }
+
+        /// <summary>
+        /// Обновляет выбранный контакт.
+        /// </summary>
+        /// <param name="contact">Контакт.</param>
+        private void UpdateSelectedContact(Contact contact)
+        {
+            FullNameTextBox.Text = contact.FullName;
+            EmailTextBox.Text = contact.Email;
+            PhoneNumbTextBox.Text = contact.PhoneNumber;
+            string date = contact.DateOfBirth.Year.ToString() + "." +
+                contact.DateOfBirth.Month.ToString() + "." +
+                contact.DateOfBirth.Day.ToString();
+            DateBirthTextBox.Text = date;
+            VKTextBox.Text = contact.IdVK;
         }
 
         /// <summary>
@@ -137,11 +147,15 @@ namespace ContactsApp.View
             }
             else
             {
-                CurrentContacts = Project.FindContactsBySubstring(Project.Contacts, FindContactTextBox.Text);
+                CurrentContacts =
+                    Project.FindContactsBySubstring(Project.Contacts, FindContactTextBox.Text);
             }
         }
 
-        public void AddNotifyBirthdayContacts()
+        /// <summary>
+        /// Добавление панели именинников.
+        /// </summary>
+        public void UpdatePanelBirthdayContacts()
         {
             string birthdayContactsNames = "";
 
@@ -230,7 +244,7 @@ namespace ContactsApp.View
             if (newContact != null)
             {
                 AddContact(newContact);
-                AddNotifyBirthdayContacts();
+                UpdatePanelBirthdayContacts();
                 UpdateListBox();
             }
         }
@@ -246,20 +260,21 @@ namespace ContactsApp.View
 
         private void RemoveContactButton_Click(object sender, EventArgs e)
         {
-            if (ContactsListBox.SelectedIndex == -1)
+            int index = ContactsListBox.SelectedIndex;
+            if (index == -1)
             {
                 return;
             }
             string message = "Do you really want to remove " +
-                             ContactsListBox.Items[ContactsListBox.SelectedIndex] + "?";
+                             ContactsListBox.Items[index] + "?";
             string title = "Caution!";
 
             if (MessageBox.Show(message, title, MessageBoxButtons.OKCancel,
                     MessageBoxIcon.Question) == DialogResult.OK)
             {
-                RemoveContact(ContactsListBox.SelectedIndex);
+                RemoveContact(index);
                 UpdateCurrentContacts();
-                AddNotifyBirthdayContacts();
+                UpdatePanelBirthdayContacts();
                 UpdateListBox();
             }
         }
@@ -283,13 +298,14 @@ namespace ContactsApp.View
             UpdateListBox();
             UpdateCurrentContacts();
             CurrentContacts = Project.SortContactsByName(CurrentContacts);
-            AddNotifyBirthdayContacts();
+            UpdatePanelBirthdayContacts();
             UpdateSelectedContact(indexEditedContact);
         }
 
         private void FindContactTextBox_TextChanged(object sender, EventArgs e)
         {
-            CurrentContacts = Project.FindContactsBySubstring(Project.Contacts, FindContactTextBox.Text);
+            CurrentContacts =
+                Project.FindContactsBySubstring(Project.Contacts, FindContactTextBox.Text);
             UpdateListBox();
         }
 
