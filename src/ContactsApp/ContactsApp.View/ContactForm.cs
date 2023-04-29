@@ -88,12 +88,12 @@ namespace ContactsApp.View
 
             errors = errors.Where(error => error != null).ToList();
 
-            if (errors == null)
+            if (errors.Count == 0)
             {
                 return true;
             }
 
-            resultError = "-" + String.Join("\n -", errors);
+            resultError = " - " + String.Join("\n - ", errors);
 
             MessageBox.Show(resultError, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;

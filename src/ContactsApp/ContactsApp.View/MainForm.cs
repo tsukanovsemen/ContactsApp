@@ -75,13 +75,13 @@ namespace ContactsApp.View
         /// <param name="index">Индекс выбранного контакта.</param>
         private void UpdateSelectedContact(int index)
         {
-            Contact contact = CurrentContacts[index];
             if (index == -1)
             {
                 ClearSelectedContact();
             }
             else
             {
+                Contact contact = CurrentContacts[index];
                 UpdateSelectedContact(contact);
             }
         }
@@ -141,15 +141,8 @@ namespace ContactsApp.View
         /// </summary>
         public void UpdateCurrentContacts()
         {
-            if (FindContactTextBox.Text == "")
-            {
-                CurrentContacts = Project.Contacts;
-            }
-            else
-            {
-                CurrentContacts =
-                    Project.FindContactsBySubstring(Project.Contacts, FindContactTextBox.Text);
-            }
+            CurrentContacts =
+                Project.FindContactsBySubstring(Project.Contacts, FindContactTextBox.Text);
         }
 
         /// <summary>
@@ -307,6 +300,7 @@ namespace ContactsApp.View
             CurrentContacts =
                 Project.FindContactsBySubstring(Project.Contacts, FindContactTextBox.Text);
             UpdateListBox();
+            CurrentContacts = Project.SortContactsByName(CurrentContacts);
         }
 
         private void CloseReminderButton_Click(object sender, EventArgs e)
