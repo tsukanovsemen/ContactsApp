@@ -123,6 +123,9 @@ namespace ContactsApp.View
             }
         }
 
+        /// <summary>
+        /// Обновление текущих контактов в зависимости от запроса поиска.
+        /// </summary>
         public void UpdateCurrentContacts()
         {
             if (FindContactTextBox.Text == "")
