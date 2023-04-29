@@ -103,9 +103,9 @@ namespace ContactsApp.Model
             }
             set
             {
-                if (!(value == ""))
+                if ((value != "") && (StringTools.IsPhoneNumberCorrect(value)))
                 {
-                    _phoneNumber = StringTools.FilterStringPhoneNumber(value);
+                    _phoneNumber = value;
                 }
                 else
                 {

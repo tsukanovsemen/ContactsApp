@@ -34,11 +34,18 @@ namespace ContactsApp.Model
         /// </summary>
         /// <param name="value">Входная строка символов.</param>
         /// <returns>Выходная строка.</returns>
-        public static string FilterStringPhoneNumber(string value)
+        public static bool IsPhoneNumberCorrect(string value)
         {
             string allowedChars = "1234567890+()- ";
-            return new string(value.Where(character =>
-            allowedChars.Contains(character)).ToArray());
+
+            for (int i = 0; i < value.Length; i++)
+            {
+                if (!allowedChars.Contains(value[i]))
+                {
+                    throw new ArgumentException("Phone number can contain only 1234567890+()- chars.");
+                }
+            }
+            return true;
         }
     }
 }
