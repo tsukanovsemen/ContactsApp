@@ -44,11 +44,6 @@ namespace ContactsApp.View
         private string _idVKError;
 
         /// <summary>
-        /// Проверка нажата кнопка ОК при закрытии окна или же окно закрывается другим способом.
-        /// </summary>
-        bool _okButtonIsClicked = false;
-
-        /// <summary>
         /// Создает экземпляр класса <see cref = "ContactForm"/>
         /// </summary>
         public ContactForm()
@@ -148,14 +143,15 @@ namespace ContactsApp.View
         {
             if (CheckFormOnErrors())
             {
+                DialogResult = DialogResult.OK;
                 UpdateContact();
-                _okButtonIsClicked = true;
                 Close();
             }
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.Cancel;
             Contact = null;
             Close();
         }
@@ -242,7 +238,7 @@ namespace ContactsApp.View
 
         private void ContactForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!_okButtonIsClicked)
+            if (!(DialogResult == DialogResult.OK))
             {
                 Contact = null;
             }
