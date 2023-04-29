@@ -125,7 +125,14 @@ namespace ContactsApp.View
 
         public void UpdateCurrentContacts()
         {
-            CurrentContacts = Project.Contacts;
+            if (FindContactTextBox.Text == "")
+            {
+                CurrentContacts = Project.Contacts;
+            }
+            else
+            {
+                CurrentContacts = Project.FindContactsBySubstring(Project.Contacts, FindContactTextBox.Text);
+            }
         }
 
         private void FullNameTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -224,6 +231,7 @@ namespace ContactsApp.View
                     MessageBoxIcon.Question) == DialogResult.OK)
             {
                 RemoveContact(ContactsListBox.SelectedIndex);
+                UpdateCurrentContacts();
                 UpdateListBox();
             }
         }
