@@ -34,6 +34,8 @@ namespace ContactsApp.View
             InitializeComponent();
             UpdateCurrentContacts();
             CurrentContacts = Project.SortContactsByName(CurrentContacts);
+            BirthdayContactLabel.Text =
+                ListBirthdayContacts(Project.FindBirthdayContact(Project.Contacts));
         }
 
         /// <summary>
@@ -56,6 +58,8 @@ namespace ContactsApp.View
             Project.Contacts.Add(contact);
             UpdateCurrentContacts();
             CurrentContacts = Project.SortContactsByName(CurrentContacts);
+            BirthdayContactLabel.Text =
+                ListBirthdayContacts(Project.FindBirthdayContact(Project.Contacts));
         }
 
         /// <summary>
@@ -66,6 +70,8 @@ namespace ContactsApp.View
         {
             ContactsListBox.Items.RemoveAt(index);
             Project.Contacts.Remove(CurrentContacts[index]);
+            BirthdayContactLabel.Text =
+                ListBirthdayContacts(Project.FindBirthdayContact(Project.Contacts));
         }
 
         /// <summary>
@@ -138,6 +144,25 @@ namespace ContactsApp.View
             {
                 CurrentContacts = Project.FindContactsBySubstring(Project.Contacts, FindContactTextBox.Text);
             }
+        }
+
+        public String ListBirthdayContacts(List<Contact> contacts)
+        {
+            string birthdayContactsNames = "";
+            foreach (Contact contact in contacts)
+            {
+                birthdayContactsNames += contact.FullName;
+            }
+
+            if (birthdayContactsNames == "")
+            {
+                //BirthdayPanel.Visible = false;
+            }
+            else
+            {
+                //BirthdayPanel.Visible = true;
+            }
+            return birthdayContactsNames;
         }
 
         private void FullNameTextBox_KeyPress(object sender, KeyPressEventArgs e)

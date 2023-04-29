@@ -41,7 +41,7 @@
             this.PersonInfoPanel = new System.Windows.Forms.Panel();
             this.BirthdayPanel = new System.Windows.Forms.Panel();
             this.CloseReminderButton = new System.Windows.Forms.Button();
-            this.BirthdayBoyLabel = new System.Windows.Forms.Label();
+            this.BirthdayContactLabel = new System.Windows.Forms.Label();
             this.BirthdayTextLabel = new System.Windows.Forms.Label();
             this.InfoBirthPictureBox = new System.Windows.Forms.PictureBox();
             this.VKTextBox = new System.Windows.Forms.TextBox();
@@ -210,7 +210,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BirthdayPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
             this.BirthdayPanel.Controls.Add(this.CloseReminderButton);
-            this.BirthdayPanel.Controls.Add(this.BirthdayBoyLabel);
+            this.BirthdayPanel.Controls.Add(this.BirthdayContactLabel);
             this.BirthdayPanel.Controls.Add(this.BirthdayTextLabel);
             this.BirthdayPanel.Controls.Add(this.InfoBirthPictureBox);
             this.BirthdayPanel.Location = new System.Drawing.Point(3, 369);
@@ -233,14 +233,14 @@
             // 
             // BirthdayBoyLabel
             // 
-            this.BirthdayBoyLabel.AutoSize = true;
-            this.BirthdayBoyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BirthdayBoyLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
-            this.BirthdayBoyLabel.Location = new System.Drawing.Point(82, 40);
-            this.BirthdayBoyLabel.Name = "BirthdayBoyLabel";
-            this.BirthdayBoyLabel.Size = new System.Drawing.Size(201, 13);
-            this.BirthdayBoyLabel.TabIndex = 2;
-            this.BirthdayBoyLabel.Text = "Абакумов, Петров, Иванов и др.";
+            this.BirthdayContactLabel.AutoSize = true;
+            this.BirthdayContactLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BirthdayContactLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
+            this.BirthdayContactLabel.Location = new System.Drawing.Point(82, 40);
+            this.BirthdayContactLabel.Name = "BirthdayBoyLabel";
+            this.BirthdayContactLabel.Size = new System.Drawing.Size(201, 13);
+            this.BirthdayContactLabel.TabIndex = 2;
+            this.BirthdayContactLabel.Text = "Абакумов, Петров, Иванов и др.";
             // 
             // BirthdayTextLabel
             // 
@@ -418,7 +418,7 @@
         private System.Windows.Forms.Panel BirthdayPanel;
         private System.Windows.Forms.PictureBox InfoBirthPictureBox;
         private System.Windows.Forms.Button CloseReminderButton;
-        private System.Windows.Forms.Label BirthdayBoyLabel;
+        private System.Windows.Forms.Label BirthdayContactLabel;
         private System.Windows.Forms.Label BirthdayTextLabel;
         private System.Windows.Forms.PictureBox RemoveContactButton;
         private System.Windows.Forms.PictureBox EditContactButton;
