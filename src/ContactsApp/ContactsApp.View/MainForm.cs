@@ -33,6 +33,7 @@ namespace ContactsApp.View
         {
             InitializeComponent();
             UpdateCurrentContacts();
+            CurrentContacts = Project.SortContactsByName(CurrentContacts);
         }
 
         /// <summary>
@@ -54,6 +55,7 @@ namespace ContactsApp.View
         {
             Project.Contacts.Add(contact);
             UpdateCurrentContacts();
+            CurrentContacts = Project.SortContactsByName(CurrentContacts);
         }
 
         /// <summary>
