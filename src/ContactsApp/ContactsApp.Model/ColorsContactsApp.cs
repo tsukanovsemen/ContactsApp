@@ -15,11 +15,11 @@ namespace ContactsApp.Model
         /// <summary>
         /// Цвет ошибки работы приложения.
         /// </summary>
-        public static Color ColorError { get; private set; } = Color.LightPink;
+        public static Color COLOR_ERROR { get; private set; } = Color.LightPink;
 
         /// <summary>
         /// Цвет правильной работы приложения.
         /// </summary>
-        public static Color ColorCorrectly { get; private set; } = Color.White;
+        public static Color COLOR_CORRECTLY { get; private set; } = Color.White;
     }
 }

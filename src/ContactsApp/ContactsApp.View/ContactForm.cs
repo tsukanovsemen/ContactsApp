@@ -164,11 +164,11 @@ namespace ContactsApp.View
             }
             catch (ArgumentException ex)
             {
-                FullNameTextBox.BackColor = ColorsContactsApp.ColorError;
+                FullNameTextBox.BackColor = ColorsContactsApp.COLOR_ERROR;
                 _fullNameError = ex.Message;
                 return;
             }
-            FullNameTextBox.BackColor = ColorsContactsApp.ColorCorrectly;
+            FullNameTextBox.BackColor = ColorsContactsApp.COLOR_CORRECTLY;
             _fullNameError = null;
         }
 
@@ -180,11 +180,11 @@ namespace ContactsApp.View
             }
             catch (ArgumentException ex)
             {
-                EmailTextBox.BackColor = ColorsContactsApp.ColorError;
+                EmailTextBox.BackColor = ColorsContactsApp.COLOR_ERROR;
                 _emailError = ex.Message;
                 return;
             }
-            EmailTextBox.BackColor = ColorsContactsApp.ColorCorrectly;
+            EmailTextBox.BackColor = ColorsContactsApp.COLOR_CORRECTLY;
             _emailError = null;
         }
 
@@ -196,11 +196,11 @@ namespace ContactsApp.View
             }
             catch (ArgumentException ex)
             {
-                PhoneNumbTextBox.BackColor = ColorsContactsApp.ColorError;
+                PhoneNumbTextBox.BackColor = ColorsContactsApp.COLOR_ERROR;
                 _phoneNumberError = ex.Message;
                 return;
             }
-            PhoneNumbTextBox.BackColor = ColorsContactsApp.ColorCorrectly;
+            PhoneNumbTextBox.BackColor = ColorsContactsApp.COLOR_CORRECTLY;
             _phoneNumberError = null;
         }
 
@@ -212,11 +212,11 @@ namespace ContactsApp.View
             }
             catch (ArgumentException ex)
             {
-                DateTimePicker.BackColor = ColorsContactsApp.ColorError;
+                DateTimePicker.BackColor = ColorsContactsApp.COLOR_ERROR;
                 _dateOfBirthError = ex.Message;
                 return;
             }
-            DateTimePicker.BackColor = ColorsContactsApp.ColorCorrectly;
+            DateTimePicker.BackColor = ColorsContactsApp.COLOR_CORRECTLY;
             _dateOfBirthError = null;
         }
 
@@ -228,11 +228,11 @@ namespace ContactsApp.View
             }
             catch (ArgumentException ex)
             {
-                VKTextBox.BackColor = ColorsContactsApp.ColorError;
+                VKTextBox.BackColor = ColorsContactsApp.COLOR_ERROR;
                 _idVKError = ex.Message;
                 return;
             }
-            VKTextBox.BackColor = ColorsContactsApp.ColorCorrectly;
+            VKTextBox.BackColor = ColorsContactsApp.COLOR_CORRECTLY;
             _idVKError = null;
         }
 
