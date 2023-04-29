@@ -34,8 +34,7 @@ namespace ContactsApp.View
             InitializeComponent();
             UpdateCurrentContacts();
             CurrentContacts = Project.SortContactsByName(CurrentContacts);
-            BirthdayContactLabel.Text =
-                ListBirthdayContacts(Project.FindBirthdayContact(Project.Contacts));
+            AddNotifyBirthdayContacts();
         }
 
         /// <summary>
@@ -58,8 +57,6 @@ namespace ContactsApp.View
             Project.Contacts.Add(contact);
             UpdateCurrentContacts();
             CurrentContacts = Project.SortContactsByName(CurrentContacts);
-            BirthdayContactLabel.Text =
-                ListBirthdayContacts(Project.FindBirthdayContact(Project.Contacts));
         }
 
         /// <summary>
@@ -70,8 +67,6 @@ namespace ContactsApp.View
         {
             ContactsListBox.Items.RemoveAt(index);
             Project.Contacts.Remove(CurrentContacts[index]);
-            BirthdayContactLabel.Text =
-                ListBirthdayContacts(Project.FindBirthdayContact(Project.Contacts));
         }
 
         /// <summary>
@@ -146,23 +141,24 @@ namespace ContactsApp.View
             }
         }
 
-        public String ListBirthdayContacts(List<Contact> contacts)
+        public void AddNotifyBirthdayContacts()
         {
             string birthdayContactsNames = "";
-            foreach (Contact contact in contacts)
+
+            List<Contact> birthdayContacts = Project.FindBirthdayContacts(Project.Contacts);
+
+            if (birthdayContacts == null)
+            {
+                BirthdayPanel.Visible = false;
+                return;
+            }
+            BirthdayPanel.Visible = true;
+            foreach (Contact contact in birthdayContacts)
             {
                 birthdayContactsNames += contact.FullName;
             }
 
-            if (birthdayContactsNames == "")
-            {
-                //BirthdayPanel.Visible = false;
-            }
-            else
-            {
-                //BirthdayPanel.Visible = true;
-            }
-            return birthdayContactsNames;
+            BirthdayContactLabel.Text = birthdayContactsNames;
         }
 
         private void FullNameTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -234,6 +230,7 @@ namespace ContactsApp.View
             if (newContact != null)
             {
                 AddContact(newContact);
+                AddNotifyBirthdayContacts();
                 UpdateListBox();
             }
         }
@@ -262,6 +259,7 @@ namespace ContactsApp.View
             {
                 RemoveContact(ContactsListBox.SelectedIndex);
                 UpdateCurrentContacts();
+                AddNotifyBirthdayContacts();
                 UpdateListBox();
             }
         }
@@ -285,6 +283,7 @@ namespace ContactsApp.View
             UpdateListBox();
             UpdateCurrentContacts();
             CurrentContacts = Project.SortContactsByName(CurrentContacts);
+            AddNotifyBirthdayContacts();
             UpdateSelectedContact(indexEditedContact);
         }
 

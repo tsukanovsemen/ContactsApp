@@ -33,7 +33,7 @@ namespace ContactsApp.Model
         /// </summary>
         /// <param name="contacts">Список всех контактов.</param>
         /// <returns>Список именниников.</returns>
-        public List<Contact> FindBirthdayContact(List<Contact> contacts)
+        public List<Contact> FindBirthdayContacts(List<Contact> contacts)
         {
             List<Contact> birthdayContact = new List<Contact>();
             foreach (Contact contact in contacts)
@@ -43,6 +43,11 @@ namespace ContactsApp.Model
                 {
                     birthdayContact.Add(contact);
                 }
+            }
+
+            if (birthdayContact.Count == 0)
+            {
+                return null;
             }
 
             return birthdayContact;

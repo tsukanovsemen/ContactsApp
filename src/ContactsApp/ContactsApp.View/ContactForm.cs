@@ -49,7 +49,6 @@ namespace ContactsApp.View
         public ContactForm()
         {
             InitializeComponent();
-            FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         /// <summary>
@@ -60,7 +59,6 @@ namespace ContactsApp.View
         public ContactForm(Contact contact)
         {
             InitializeComponent();
-            FormBorderStyle = FormBorderStyle.FixedSingle;
             Contact = contact;
             UpdateForm();
         }
