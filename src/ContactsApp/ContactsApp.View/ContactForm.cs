@@ -82,35 +82,21 @@ namespace ContactsApp.View
         private bool CheckFormOnErrors()
         {
             string resultError = "";
-            if (!(_fullNameError == null))
-            {
-                resultError += _fullNameError + "\n";
-            }
-            if (!(_emailError == null))
-            {
-                resultError += _emailError + "\n";
-            }
-            if (!(_phoneNumberError == null))
-            {
-                resultError += _phoneNumberError + "\n";
-            }
-            if (!(_dateOfBirthError == null))
-            {
-                resultError += _dateOfBirthError + "\n";
-            }
-            if (!(_idVKError == null))
-            {
-                resultError += _idVKError + "\n";
-            }
-            if (!(resultError == ""))
-            {
-                MessageBox.Show(resultError, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            else
+
+            var errors = new List<String> { _fullNameError, _emailError,
+                _phoneNumberError,_dateOfBirthError, _idVKError };
+
+            errors = errors.Where(error => error != null).ToList();
+
+            if (errors == null)
             {
                 return true;
             }
+
+            resultError = "-" + String.Join("\n -", errors);
+
+            MessageBox.Show(resultError, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
         }
 
         /// <summary>
