@@ -62,6 +62,7 @@
     <Compile Include="ContactForm.Designer.cs">
       <DependentUpon>ContactForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ContactsAppColors.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

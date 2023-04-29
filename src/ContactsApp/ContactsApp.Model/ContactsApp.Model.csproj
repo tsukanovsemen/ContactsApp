@@ -48,7 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ColorsContactsApp.cs" />
     <Compile Include="Contact.cs" />
     <Compile Include="StringTools.cs" />
     <Compile Include="Project.cs" />
