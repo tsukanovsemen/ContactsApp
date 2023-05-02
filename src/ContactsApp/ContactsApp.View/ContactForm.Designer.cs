@@ -73,12 +73,13 @@
             // 
             // DateTimePicker
             // 
+            this.DateTimePicker.Checked = false;
             this.DateTimePicker.Location = new System.Drawing.Point(109, 202);
-            this.DateTimePicker.MaxDate = new System.DateTime(2023, 4, 28, 0, 0, 0, 0);
+            this.DateTimePicker.MaxDate = new System.DateTime(2023, 5, 2, 11, 41, 19, 0);
             this.DateTimePicker.Name = "DateTimePicker";
             this.DateTimePicker.Size = new System.Drawing.Size(175, 20);
             this.DateTimePicker.TabIndex = 23;
-            this.DateTimePicker.Value = new System.DateTime(2023, 4, 24, 19, 15, 11, 0);
+            this.DateTimePicker.Value = new System.DateTime(2023, 5, 2, 0, 0, 0, 0);
             this.DateTimePicker.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
             // 
             // OKCancelPanel
