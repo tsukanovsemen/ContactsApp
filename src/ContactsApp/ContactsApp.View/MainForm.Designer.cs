@@ -231,13 +231,13 @@
             this.CloseReminderButton.UseVisualStyleBackColor = true;
             this.CloseReminderButton.Click += new System.EventHandler(this.CloseReminderButton_Click);
             // 
-            // BirthdayBoyLabel
+            // BirthdayContactLabel
             // 
             this.BirthdayContactLabel.AutoSize = true;
             this.BirthdayContactLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BirthdayContactLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
             this.BirthdayContactLabel.Location = new System.Drawing.Point(82, 40);
-            this.BirthdayContactLabel.Name = "BirthdayBoyLabel";
+            this.BirthdayContactLabel.Name = "BirthdayContactLabel";
             this.BirthdayContactLabel.Size = new System.Drawing.Size(201, 13);
             this.BirthdayContactLabel.TabIndex = 2;
             this.BirthdayContactLabel.Text = "Абакумов, Петров, Иванов и др.";
@@ -377,6 +377,7 @@
             this.KeyPreview = true;
             this.Name = "MainForm";
             this.Text = "ContactsApp";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.MainTableLayoutPanel.ResumeLayout(false);
             this.FunctionalPanel.ResumeLayout(false);

@@ -33,7 +33,7 @@ namespace ContactsApp.Model
         /// Сохранение объекта Project в файл.
         /// </summary>
         /// <param name="project"></param>
-        public void SaveProject(Project project)
+        public static void SaveProject(Project project)
         {
             if (!Directory.Exists(_path))
             {
@@ -47,7 +47,7 @@ namespace ContactsApp.Model
         /// Загрузка объекта Project из файла.
         /// </summary>
         /// <returns></returns>
-        public Project LoadProject()
+        public static Project LoadProject()
         {
             try
             {

@@ -19,7 +19,7 @@ namespace ContactsApp.View
         /// <summary>
         /// Объект класса Project.
         /// </summary>
-        public Project Project { get; private set; } = new Project();
+        public Project Project { get; private set; }
 
         /// <summary>
         /// Список текущих контактов.
@@ -32,8 +32,10 @@ namespace ContactsApp.View
         public MainForm()
         {
             InitializeComponent();
+            Project = ProjectManager.LoadProject();
             UpdateCurrentContacts();
             CurrentContacts = Project.SortContactsByName(CurrentContacts);
+            UpdateListBox();
             UpdatePanelBirthdayContacts();
         }
 
@@ -239,6 +241,7 @@ namespace ContactsApp.View
                 AddContact(newContact);
                 UpdatePanelBirthdayContacts();
                 UpdateListBox();
+                ProjectManager.SaveProject(Project);
             }
         }
 
@@ -269,6 +272,7 @@ namespace ContactsApp.View
                 UpdateCurrentContacts();
                 UpdatePanelBirthdayContacts();
                 UpdateListBox();
+                ProjectManager.SaveProject(Project);
             }
         }
 
@@ -293,6 +297,7 @@ namespace ContactsApp.View
             CurrentContacts = Project.SortContactsByName(CurrentContacts);
             UpdatePanelBirthdayContacts();
             UpdateSelectedContact(indexEditedContact);
+            ProjectManager.SaveProject(Project);
         }
 
         private void FindContactTextBox_TextChanged(object sender, EventArgs e)
@@ -306,6 +311,11 @@ namespace ContactsApp.View
         private void CloseReminderButton_Click(object sender, EventArgs e)
         {
             BirthdayPanel.Visible = false;
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ProjectManager.SaveProject(Project);
         }
     }
 }
