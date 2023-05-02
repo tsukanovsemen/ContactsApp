@@ -84,7 +84,7 @@ namespace ContactsApp.View
             else
             {
                 Contact contact = CurrentContacts[index];
-                UpdateSelectedContact(contact);
+                FillSelectedContact(contact);
             }
         }
 
@@ -92,7 +92,7 @@ namespace ContactsApp.View
         /// Обновляет выбранный контакт.
         /// </summary>
         /// <param name="contact">Контакт.</param>
-        private void UpdateSelectedContact(Contact contact)
+        private void FillSelectedContact(Contact contact)
         {
             FullNameTextBox.Text = contact.FullName;
             EmailTextBox.Text = contact.Email;
@@ -127,14 +127,15 @@ namespace ContactsApp.View
                 throw new ArgumentException("Index of chosen contact must be greater then 0.");
             }
 
-            var form = new ContactForm((Contact)Project.Contacts[index].Clone());
+            var form = new ContactForm((Contact)CurrentContacts[index].Clone());
             form.ShowDialog();
             var editedContact = form.Contact;
 
             if (editedContact != null)
             {
-                Project.Contacts.RemoveAt(index);
-                Project.Contacts.Insert(index, editedContact);
+                int indexProjectContact = Project.Contacts.IndexOf(CurrentContacts[index]);
+                Project.Contacts.Remove(CurrentContacts[index]);
+                Project.Contacts.Insert(indexProjectContact, editedContact);
             }
         }
 
@@ -270,6 +271,7 @@ namespace ContactsApp.View
             {
                 RemoveContact(index);
                 UpdateCurrentContacts();
+                CurrentContacts = Project.SortContactsByName(CurrentContacts);
                 UpdatePanelBirthdayContacts();
                 UpdateListBox();
                 ProjectManager.SaveProject(Project);
@@ -292,9 +294,9 @@ namespace ContactsApp.View
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
             }
-            UpdateListBox();
             UpdateCurrentContacts();
             CurrentContacts = Project.SortContactsByName(CurrentContacts);
+            UpdateListBox();
             UpdatePanelBirthdayContacts();
             UpdateSelectedContact(indexEditedContact);
             ProjectManager.SaveProject(Project);
