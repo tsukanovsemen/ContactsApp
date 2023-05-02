@@ -1,1 +1,0 @@
-{"Contacts":[{"FullName":"Semen","Email":"a@mail","PhoneNumber":"8909","DayOfBirth":"2000-01-01T00:00:00","IdVK":"sdfsf"},{"FullName":"Andrey","Email":"and@mail","PhoneNumber":"8909","DayOfBirth":"2000-01-01T00:00:00","IdVK":"sdfsf"}]}
