@@ -103,13 +103,18 @@ namespace ContactsApp.Model
             }
             set
             {
-                if ((value != "") && (StringTools.IsPhoneNumberCorrect(value)))
+                if (value == "")
+                {
+                    value = " ";
+                }
+
+                if (StringTools.IsPhoneNumberCorrect(value))
                 {
                     _phoneNumber = value;
                 }
                 else
                 {
-                    _phoneNumber = " ";
+                    throw new ArgumentException("Phone number can contain only 1234567890+()- chars.");
                 }
             }
         }
@@ -158,13 +163,13 @@ namespace ContactsApp.Model
                         $"{_maxIdVKLength} characters.");
                 }
 
-                if (!(value == ""))
+                if (value == "")
                 {
-                    _idVK = value;
+                    _idVK = " ";
                 }
                 else
                 {
-                    _idVK = " ";
+                    _idVK = value;
                 }
             }
         }

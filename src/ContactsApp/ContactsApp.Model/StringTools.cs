@@ -42,7 +42,7 @@ namespace ContactsApp.Model
             {
                 if (!allowedChars.Contains(value[i]))
                 {
-                    throw new ArgumentException("Phone number can contain only 1234567890+()- chars.");
+                    return false;
                 }
             }
             return true;
