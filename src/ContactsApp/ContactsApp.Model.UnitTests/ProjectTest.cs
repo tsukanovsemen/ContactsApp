@@ -96,15 +96,37 @@ namespace ContactsApp.Model.UnitTests
             var someDate = birthDate.AddDays(-3);
             firstContact.DateOfBirth = someDate;
             contactsList.Add(firstContact);
-
-            var secondContact = new Contact();
-            secondContact.DateOfBirth = birthDate;
-            contactsList.Add(secondContact);
+            contactsList.Add(birthdayContact);
             var actualContactsList = _project.FindBirthdayContacts(contactsList);
 
             //Assert
-            Assert.AreEqual(expectedContactsList[0].DateOfBirth, 
-                actualContactsList[0].DateOfBirth);
+            Assert.AreEqual(expectedContactsList,
+                actualContactsList);
+        }
+
+        [Test(Description = "Positive test of finding contacts by substring.")]
+        public void FindContactsBySubstring_FindContacts_ReturnsContactsList()
+        {
+            //Avarrage
+            var desiredContactsList = new List<Contact>();
+            Contact setupContact = new Contact();
+            var fullName = "Семен.";
+            setupContact.FullName = fullName;
+            desiredContactsList.Add(setupContact);
+            var expectedContactsList = desiredContactsList;
+
+            //Act
+            var contactsList = new List<Contact>();
+            contactsList.Add(setupContact);
+            Contact anotherContact = new Contact();
+            var fullNameAnotherContact = "Андрей.";
+            anotherContact.FullName = fullNameAnotherContact;
+            contactsList.Add(anotherContact);
+            var substring = "Сем";
+            var actualContactsList = _project.FindContactsBySubstring(contactsList, substring);
+
+            //Assert
+            Assert.AreEqual(expectedContactsList, actualContactsList);
         }
     }
 }
