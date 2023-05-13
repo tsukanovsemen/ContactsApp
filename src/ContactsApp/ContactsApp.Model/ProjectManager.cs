@@ -53,14 +53,10 @@ namespace ContactsApp.Model
             {
                 var project = JsonConvert.
                     DeserializeObject<Project>(File.ReadAllText(_fullPath));
-                if (project == null)
-                {
-                    return new Project();
-                }
 
-                return project;
+                return project ?? new Project();
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
                 return new Project();
             }

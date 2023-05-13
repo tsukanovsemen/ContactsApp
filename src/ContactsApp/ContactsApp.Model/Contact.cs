@@ -114,7 +114,8 @@ namespace ContactsApp.Model
                 }
                 else
                 {
-                    throw new ArgumentException("Phone number can contain only 1234567890+()- chars.");
+                    throw new ArgumentException("Phone number can contain " +
+                        "only 1234567890+()- chars.");
                 }
             }
         }
