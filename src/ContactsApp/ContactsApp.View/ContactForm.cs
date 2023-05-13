@@ -49,6 +49,7 @@ namespace ContactsApp.View
         public ContactForm()
         {
             InitializeComponent();
+            DateTimePicker.MaxDate = DateTime.Today;
         }
 
         /// <summary>
@@ -61,6 +62,7 @@ namespace ContactsApp.View
             InitializeComponent();
             Contact = contact;
             UpdateForm();
+            DateTimePicker.MaxDate = DateTime.Today;
         }
 
         /// <summary>
