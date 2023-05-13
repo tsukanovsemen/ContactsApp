@@ -109,6 +109,7 @@ namespace ContactsApp.Model.UnitTests
             var message = "An exception should be thrown if the chars of " +
                 "the phone number are incorrect.";
 
+            //Assert
             Assert.Throws<ArgumentException>(() =>
             {
                 // Act

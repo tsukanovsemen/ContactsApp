@@ -61,12 +61,12 @@ namespace ContactsApp.Model.UnitTests
             alreadySortedContacts.Add(thirdContact);
 
             var expectedContactsList = alreadySortedContacts;
-
-            // Act
             List<Contact> contacts = new List<Contact>();
             contacts.Add(secondContact);
             contacts.Add(thirdContact);
             contacts.Add(firstContact);
+
+            // Act
             var actualContactsList = project.SortContactsByName(contacts);
 
             // Assert
@@ -85,13 +85,14 @@ namespace ContactsApp.Model.UnitTests
             birthdayContactsList.Add(birthdayContact);
             var expectedContactsList = birthdayContactsList;
 
-            // Act
             var contactsList = new List<Contact>();
             var firstContact = new Contact();
             var someDate = birthDate.AddDays(-3);
             firstContact.DateOfBirth = someDate;
             contactsList.Add(firstContact);
             contactsList.Add(birthdayContact);
+
+            // Act
             var actualContactsList = project.FindBirthdayContacts(contactsList);
 
             // Assert
@@ -114,7 +115,6 @@ namespace ContactsApp.Model.UnitTests
             desiredContactsList.Add(secondSetupContact);
             var expectedContactsList = desiredContactsList;
 
-            // Act
             var contactsList = new List<Contact>();
             contactsList.Add(setupContact);
             contactsList.Add(secondSetupContact);
@@ -123,6 +123,8 @@ namespace ContactsApp.Model.UnitTests
             anotherContact.FullName = fullNameAnotherContact;
             contactsList.Add(anotherContact);
             var substring = "Art";
+
+            // Act
             var actualContactsList = project.FindContactsBySubstring(contactsList, substring);
 
             // Assert
