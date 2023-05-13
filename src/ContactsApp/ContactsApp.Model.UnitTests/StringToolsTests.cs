@@ -8,48 +8,48 @@ using NUnit.Framework;
 namespace ContactsApp.Model.UnitTests
 {
     [TestFixture]
-    public class StringToolsTest
+    public class StringToolsTests
     {
         [Test(Description = "Positive test of converting lower letters to upper ones.")]
         public void FirtsCharactersToUpperCaseMethod_ConvertString_ConvertedString()
         {
-            //Avarrage
+            // Setup
             var convertedText = "Some Text";
             var expectedText = convertedText;
 
-            //Act
+            // Act
             var convertingText = "some text";
             var actualText = StringTools.FirstCharactersToUpperCase(convertingText);
 
-            //Assert
+            // Assert
             Assert.AreEqual(expectedText, actualText);
         }
 
         [Test(Description = "Positive test of validation phone number.")]
         public void ValidationPhoneNumberCorrect_Validation_ReturnsTrue()
         {
-            //Avarrage
+            // Setup
             var expectedResult = true;
 
-            //Act
+            // Act
             var value = "1234567890()-";
             var actualResult = StringTools.IsPhoneNumberCorrect(value);
 
-            //Assert
+            // Assert
             Assert.AreEqual(expectedResult, actualResult);
         }
 
         [Test(Description = "Negative test of validation phone number.")]
         public void ValidationPhoneNumberIncorrect_Validation_ReturnsFalse()
         {
-            //Avarrage
+            // Setup
             var expectedResult = false;
 
-            //Act
+            // Act
             var value = "Hello World.";
             var actualResult = StringTools.IsPhoneNumberCorrect(value);
 
-            //Assert
+            // Assert
             Assert.AreEqual(expectedResult, actualResult);
         }
     }
