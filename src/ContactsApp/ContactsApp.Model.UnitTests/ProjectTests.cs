@@ -8,46 +8,40 @@ using NUnit.Framework;
 namespace ContactsApp.Model.UnitTests
 {
     [TestFixture]
-    public class ProjectTest
+    public class ProjectTests
     {
-        Project _project;
-
-        [SetUp]
-        public void InitializeProject()
-        {
-            _project = new Project();
-        }
-
         [Test(Description = "Positive get contacts test.")]
         public void Contacts_GetContacts_ReturnsSameValue()
         {
-            //Avarrage
-            var fullNameFirst = "Sem";
-            var fullNameSecond = "Artem";
-            var expectedFullNameFirstContact = fullNameFirst;
-            var expectedFullNameSecondContact = fullNameSecond;
-
-            //Act
+            // Setup
+            Project project = new Project();
             Contact firstContact = new Contact();
-            firstContact.FullName = fullNameFirst;
-            _project.Contacts.Add(firstContact);
-
             Contact secondContact = new Contact();
-            secondContact.FullName = fullNameSecond;
-            _project.Contacts.Add(secondContact);
+            var expectedFirstContact = firstContact;
+            var expectedSecondContact = secondContact;
 
-            var actualFullNameFirstContact = _project.Contacts[0].FullName;
-            var actualFullNameSecondContact = _project.Contacts[1].FullName;
+            // Act
+            project.Contacts.Add(firstContact);
+            project.Contacts.Add(secondContact);
 
-            //Assert
-            Assert.AreEqual(expectedFullNameFirstContact, actualFullNameFirstContact);
-            Assert.AreEqual(expectedFullNameSecondContact, actualFullNameSecondContact);
+            var actualFirstContact = project.Contacts[0];
+            var actualSecondContact = project.Contacts[1];
+
+            // Assert
+            Assert.Multiple(
+                () =>
+                {
+                    Assert.AreEqual(expectedFirstContact, actualFirstContact);
+                    Assert.AreEqual(expectedSecondContact, actualSecondContact);
+                }
+                );
         }
 
         [Test(Description = "Positive test of sorting contacts")]
         public void SortByNameMethod_SortContacts_SortedList()
         {
-            //Avarrage
+            // Setup
+            Project project = new Project();
             List<Contact> alreadySortedContacts = new List<Contact>();
 
             Contact firstContact = new Contact();
@@ -68,21 +62,22 @@ namespace ContactsApp.Model.UnitTests
 
             var expectedContactsList = alreadySortedContacts;
 
-            //Act
+            // Act
             List<Contact> contacts = new List<Contact>();
             contacts.Add(secondContact);
             contacts.Add(thirdContact);
             contacts.Add(firstContact);
-            var actualContactsList = _project.SortContactsByName(contacts);
+            var actualContactsList = project.SortContactsByName(contacts);
 
-            //Assert
-            Assert.AreEqual(expectedContactsList, actualContactsList);
+            // Assert
+            AssertCompareContactsLists(expectedContactsList, actualContactsList);
         }
 
         [Test(Description = "Positive test of finding birthday contacts.")]
         public void FindBirthdayContactsMethod_FindContacts_ReturnsBirthdayList()
         {
-            //Avarrage
+            // Setup
+            Project project = new Project();
             var birthdayContactsList = new List<Contact>();
             var birthdayContact = new Contact();
             var birthDate = DateTime.Today;
@@ -90,43 +85,62 @@ namespace ContactsApp.Model.UnitTests
             birthdayContactsList.Add(birthdayContact);
             var expectedContactsList = birthdayContactsList;
 
-            //Act
+            // Act
             var contactsList = new List<Contact>();
             var firstContact = new Contact();
             var someDate = birthDate.AddDays(-3);
             firstContact.DateOfBirth = someDate;
             contactsList.Add(firstContact);
             contactsList.Add(birthdayContact);
-            var actualContactsList = _project.FindBirthdayContacts(contactsList);
+            var actualContactsList = project.FindBirthdayContacts(contactsList);
 
-            //Assert
-            Assert.AreEqual(expectedContactsList,
-                actualContactsList);
+            // Assert
+            AssertCompareContactsLists(expectedContactsList, actualContactsList);
         }
 
         [Test(Description = "Positive test of finding contacts by substring.")]
         public void FindContactsBySubstring_FindContacts_ReturnsContactsList()
         {
-            //Avarrage
+            // Setup
+            Project project = new Project();
             var desiredContactsList = new List<Contact>();
             Contact setupContact = new Contact();
-            var fullName = "Семен.";
+            var fullName = "Artem";
             setupContact.FullName = fullName;
             desiredContactsList.Add(setupContact);
+            var secondFullName = "Artur";
+            Contact secondSetupContact = new Contact();
+            secondSetupContact.FullName = secondFullName;
+            desiredContactsList.Add(secondSetupContact);
             var expectedContactsList = desiredContactsList;
 
-            //Act
+            // Act
             var contactsList = new List<Contact>();
             contactsList.Add(setupContact);
+            contactsList.Add(secondSetupContact);
             Contact anotherContact = new Contact();
-            var fullNameAnotherContact = "Андрей.";
+            var fullNameAnotherContact = "Boris";
             anotherContact.FullName = fullNameAnotherContact;
             contactsList.Add(anotherContact);
-            var substring = "Сем";
-            var actualContactsList = _project.FindContactsBySubstring(contactsList, substring);
+            var substring = "Art";
+            var actualContactsList = project.FindContactsBySubstring(contactsList, substring);
 
-            //Assert
-            Assert.AreEqual(expectedContactsList, actualContactsList);
+            // Assert
+            AssertCompareContactsLists(expectedContactsList, actualContactsList);
+        }
+
+        /// <summary>
+        /// Сравнение каждого контакта из списка через CompateContacts класс.
+        /// </summary>
+        /// <param name="contactsList1">Первый список контактов.</param>
+        /// <param name="contactsList2">Второй список контактов.</param>
+        private void AssertCompareContactsLists(List<Contact> expectedList, List<Contact> actualList)
+        {
+            for (int i = 0; i < actualList.Count; i++)
+            {
+                CompareContacts.AssertComparedContacts(expectedList[i],
+                     actualList[i]);
+            }
         }
     }
 }

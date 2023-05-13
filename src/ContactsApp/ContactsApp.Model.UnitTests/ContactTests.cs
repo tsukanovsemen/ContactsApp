@@ -271,11 +271,16 @@ namespace ContactsApp.Model.UnitTests
             var actualIdVk = contact.IdVK;
 
             // Assert
-            Assert.AreEqual(expectedFullName, actualFullName);
-            Assert.AreEqual(expectedEmail, actualEmail);
-            Assert.AreEqual(expectedPhoneNumber, actualPhoneNumber);
-            Assert.AreEqual(expectedDateOfBirth, actualDateOfBirth);
-            Assert.AreEqual(expectedIdVk, actualIdVk);
+            Assert.Multiple(
+                () =>
+                {
+                    Assert.AreEqual(expectedFullName, actualFullName);
+                    Assert.AreEqual(expectedEmail, actualEmail);
+                    Assert.AreEqual(expectedPhoneNumber, actualPhoneNumber);
+                    Assert.AreEqual(expectedDateOfBirth, actualDateOfBirth);
+                    Assert.AreEqual(expectedIdVk, actualIdVk);
+                }
+                );
         }
 
         [Test(Description = "Positive Clone method check.")]
@@ -283,40 +288,21 @@ namespace ContactsApp.Model.UnitTests
         {
             // Setup
             var fullName = "Semyon Tsukanov";
-            var expectedFullName = fullName;
-
             var email = "email@mail.com";
-            var expectedEmail = email;
-
             var phoneNumber = "89095053939";
-            var expectedPhoneNumber = phoneNumber;
-
             var date = new DateTime(2001, 11, 6);
-            var expectedDateOfBirth = date;
-
             var idVk = "id@/vk";
-            var expectedIdVk = idVk;
-
-            Contact contact = new Contact(fullName,
+            var expectedContact = new Contact(fullName,
                 email,
                 phoneNumber,
                 date,
                 idVk);
 
             // Act
-            Contact newContact = (Contact)contact.Clone();
-            var actualFullName = newContact.FullName;
-            var actualEmail = newContact.Email;
-            var actualPhoneNumber = newContact.PhoneNumber;
-            var actualDateOfBirth = newContact.DateOfBirth;
-            var actualIdVk = newContact.IdVK;
+            var actualContact = (Contact)expectedContact.Clone();
 
             // Assert
-            Assert.AreEqual(expectedFullName, actualFullName);
-            Assert.AreEqual(expectedEmail, actualEmail);
-            Assert.AreEqual(expectedPhoneNumber, actualPhoneNumber);
-            Assert.AreEqual(expectedDateOfBirth, actualDateOfBirth);
-            Assert.AreEqual(expectedIdVk, actualIdVk);
+            CompareContacts.AssertComparedContacts(expectedContact, actualContact);
         }
     }
 }
