@@ -103,11 +103,6 @@ namespace ContactsApp.Model
             }
             set
             {
-                if (value == "")
-                {
-                    value = " ";
-                }
-
                 if (StringTools.IsPhoneNumberCorrect(value))
                 {
                     _phoneNumber = value;
@@ -164,14 +159,7 @@ namespace ContactsApp.Model
                         $"{_maxIdVKLength} characters.");
                 }
 
-                if (value == "")
-                {
-                    _idVK = " ";
-                }
-                else
-                {
-                    _idVK = value;
-                }
+                _idVK = value;
             }
         }
 
