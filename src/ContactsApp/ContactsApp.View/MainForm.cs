@@ -109,11 +109,11 @@ namespace ContactsApp.View
         /// </summary>
         private void ClearSelectedContact()
         {
-            FullNameTextBox.Text = "";
-            EmailTextBox.Text = "";
-            PhoneNumbTextBox.Text = "";
-            DateBirthTextBox.Text = "";
-            VKTextBox.Text = "";
+            FullNameTextBox.Text = string.Empty;
+            EmailTextBox.Text = string.Empty;
+            PhoneNumbTextBox.Text = string.Empty;
+            DateBirthTextBox.Text = string.Empty;
+            VKTextBox.Text = string.Empty;
         }
 
         /// <summary>
