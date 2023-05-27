@@ -1,12 +1,9 @@
 #define MyAppSetupName "ContactsApp" + GetDateTimeString('yyyy/mm/dd','','')+"_setup"
 #define MyAppName "ContactsApp"
 #define MyAppVersion "1.0"
-#define MyAppPublisher "Tsukanov, TUSUR"
+#define MyAppPublisher "Tsukanov"
 #define MyAppURL "https://github.com/tsukanovsemen"
 #define MyAppExeName "ContactsApp.View.exe"
-#define MyAppAssocName MyAppName + " File"
-#define MyAppAssocExt ".myp"
-#define MyAppAssocKey StringChange(MyAppAssocName, " ", "") + MyAppAssocExt
 
 [Setup]
 AppId={{20045191-F686-4EF2-877B-F9711C70CEC0}
@@ -16,7 +13,7 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
-DefaultDirName={pf}\Tsukanov\{#MyAppName}
+DefaultDirName={commonpf}\Tsukanov\{#MyAppName}
 ChangesAssociations=yes
 DisableProgramGroupPage=yes
 OutputDir="Output"
